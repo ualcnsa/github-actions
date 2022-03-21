@@ -1,0 +1,17 @@
+= Aplicación en Node.js
+
+////
+COLOCA A CONTINUACION LOS OBJETIVOS
+////
+
+
+.Objetivos
+====
+Como construir y desplegar apliaciones web Node.js con Jenkins
+
+. Dockerizar la aplicacion Node.js para facilitar su despliegue
+. Desplegar la aplicación Node.js tanto de forma nativa como mediante contenedor
+. Definir un pipeline para automatizar las etapas más habituales en CI/CD
+
+====
+

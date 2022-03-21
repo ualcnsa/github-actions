@@ -1,0 +1,15 @@
+= Primeros pasos con GitHub Actions
+:navtitle: Primeros pasos con GitHub Actions
+
+////
+COLOCA A CONTINUACION LOS OBJETIVOS
+////
+.Objetivos
+====
+* Vamos a crear un repositorio vacio donde crear nuestro primer flujo de trabajo con GitHub Actions.
+
+* Después, con el https://ualhmis.github.io/Jenkins2Instalacion/[repositorio con la documentación de la asignatura] crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.
+
+====
+
+
