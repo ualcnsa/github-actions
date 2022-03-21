@@ -1,4 +1,4 @@
-## Despliegue continuo con Jenkins
+## Despliegue continuo con GitHub Actions
 
-[Despliegue continuo con Jenkins](https://ualjjcanada.github.io/despliegue-continuo/)
+[Despliegue continuo con GitHub Actions](https://ualcnsa.github.io/github-actions/)
 
