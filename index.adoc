@@ -50,12 +50,12 @@ include::{sectionPath}/index.adoc[]
 :imagesdir: modules/{section}/images
 include::{sectionPath}/index.adoc[]
 include::{sectionPath}/first-project.adoc[leveloffset=+1]
-include::{sectionPath}/antora-doc.adoc[leveloffset=+1]
+//include::{sectionPath}/antora-doc.adoc[leveloffset=+1]
 
-:section: node-app
-:sectionPath: modules/{section}/pages
-:imagesdir: modules/{section}/images
-include::{sectionPath}/index.adoc[]
-include::{sectionPath}/node-hello.adoc[leveloffset=+1]
-include::{sectionPath}/node-hello-docker.adoc[leveloffset=+1]
+//:section: node-app
+//:sectionPath: modules/{section}/pages
+//:imagesdir: modules/{section}/images
+//include::{sectionPath}/index.adoc[]
+//include::{sectionPath}/node-hello.adoc[leveloffset=+1]
+//include::{sectionPath}/node-hello-docker.adoc[leveloffset=+1]
 
