@@ -665,40 +665,17 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#_introducción_a_github_actions">Introducción a GitHub Actions</a></li>
 <li><a href="#_creación_del_repositorio">Creación del repositorio</a></li>
-<li><a href="#_publicación_en_google_container_registry">Publicación en Google Container Registry</a></li>
-<li><a href="#_ejecución_del_contenedor_de_jenkins">Ejecución del contenedor de Jenkins</a></li>
-<li><a href="#_configuración_básica_de_jenkins">Configuración básica de Jenkins</a></li>
-<li><a href="#_instalación_de_plugins_adicionales">Instalación de plugins adicionales</a></li>
-<li><a href="#_configuración_las_tools_en_jenkins">Configuración las tools en Jenkins</a></li>
+<li><a href="#_creando_tu_primer_workflow">Creando tu primer workflow</a></li>
+<li><a href="#_comprobando_el_resultado">Comprobando el resultado</a></li>
 </ul>
 </li>
 <li><a href="#_primer_ejemplo_documentación_en_antora">Primer ejemplo: Documentación en Antora</a>
 <ul class="sectlevel2">
-<li><a href="#_creación_del_primer_proyecto_freestyle">Creación del primer proyecto freestyle</a></li>
-<li><a href="#_creación_del_primer_pipeline">Creación del primer pipeline</a></li>
-<li><a href="#_conexión_con_la_máquina_de_despliegue">Conexión con la máquina de despliegue</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_aplicación_en_node_js">Aplicación en Node.js</a>
-<ul class="sectlevel1">
-<li><a href="#_hola_mundo_en_node_js"><em>Hola mundo</em> en Node.js</a>
-<ul class="sectlevel2">
-<li><a href="#_construcción_y_ejecución_en_local">Construcción y ejecución en local</a></li>
-<li><a href="#_creación_del_pipeline_en_jenkins">Creación del pipeline en Jenkins</a></li>
-<li><a href="#_webhook_para_construcción_automática"><strong>Webhook</strong> para construcción automática</a></li>
-<li><a href="#_informe_de_cobertura">Informe de cobertura</a></li>
-<li><a href="#_análisis_estático_de_código">Análisis estático de código</a></li>
-<li><a href="#_despliegue_en_la_vm">Despliegue en la VM</a></li>
-</ul>
-</li>
-<li><a href="#_hola_mundo_en_node_js_con_docker"><em>Hola mundo</em> en Node.js con Docker</a>
-<ul class="sectlevel2">
-<li><a href="#_creación_del_dockerfile">Creación del <code>Dockerfile</code></a></li>
-<li><a href="#_publicación_de_la_imagen_en_el_registro">Publicación de la imagen en el registro</a></li>
-<li><a href="#_despliegue_en_vm">Despliegue en VM</a></li>
-<li><a href="#_integración_y_despliegue_continuos_con_jenkins">Integración y despliegue continuos con Jenkins</a></li>
+<li><a href="#_introducción_a_antora">Introducción a Antora</a></li>
+<li><a href="#_creación_del_repositorio_2">Creación del repositorio</a></li>
+<li><a href="#_creando_el_workflow_para_antora">Creando el workflow para Antora</a></li>
+<li><a href="#_descarga_de_los_artefactos_artifacts">Descarga de los artefactos (artifacts)</a></li>
+<li><a href="#_despliegue_en_github_pages">Despliegue en GitHub Pages</a></li>
 </ul>
 </li>
 </ul>
@@ -756,7 +733,7 @@ La entrega será mediante el envío de un informe y el acceso al profesor a los 
 <p>Vamos a crear un repositorio vacio donde crear nuestro primer flujo de trabajo con GitHub Actions.</p>
 </li>
 <li>
-<p>Después, con el <a href="https://ualhmis.github.io/Jenkins2Instalacion/">repositorio con la documentación de la asignatura</a> crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.</p>
+<p>Después, con el <a href="https://github.com/ualcnsa/cicd">repositorio con la documentación de la asignatura</a> crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.</p>
 </li>
 </ul>
 </div>
@@ -767,44 +744,179 @@ La entrega será mediante el envío de un informe y el acceso al profesor a los 
 <div class="sect1">
 <h2 id="_comenzando_con_github_actions">Comenzando con GitHub Actions</h2>
 <div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Objetivos</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Comenzar a crear flujos de trabajo (workflows) de GitHub Actions.</p>
+</li>
+<li>
+<p>Probar un flujo de trabajo sencillo para familiarizarse con la plataforma.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_introducción_a_github_actions">Introducción a GitHub Actions</h3>
-
+<div class="paragraph">
+<p><strong>GitHub Actions</strong> es una <strong>plataforma</strong> de integración continua y despliegue continuo <strong>(CI/CD)</strong> que permite crear flujos de construcción, test y despliegue en GitHub. Estos flujos de trabajo permiten crear y probar cada solicitud de cambios en tu repositorio o desplegar solicitudes de cambios fusionadas a producción.</p>
+</div>
+<div class="paragraph">
+<p>Sus principales características son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permite <strong>automatizar los flujos de trabajo</strong> proporcionando capacidades de <strong>CI/CD</strong> a GitHub.</p>
+</li>
+<li>
+<p><strong>Construye, prueba y despliega</strong> tu código directamente desde GitHub.</p>
+</li>
+<li>
+<p>Permite <strong>integrar</strong> las <strong>revisiones de código</strong>, manejo de <strong>ramas</strong>, resolución de <strong>incidencias</strong> y creación de <strong>releases</strong>.</p>
+</li>
+<li>
+<p>Permite <strong>descubrir, crear y compartir <code>actions</code></strong> para ejecutar cualquier trabajo que quieras.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_creación_del_repositorio">Creación del repositorio</h3>
 <div class="paragraph">
-<p>La imagen pública del contenedor de Jenkins está disponible en <a href="https://hub.docker.com/r/jenkins/jenkins">DockerHub</a>, con el nombre <code>jenkins/jenkins:lts</code>. Esta imagen genérica necesita instalarle algunos plugins y herramientas. En concreto, hay que instalarle el propio Docker para permitir que Jenkins ejecute tareas de docker, como por ejemplo <code>docker build</code> para construir imágenes de contenedores. Esto es lo que se conoce como <a href="https://devopscube.com/run-docker-in-docker/">Docker-in-Docker (dind)</a>, y hay que <a href="https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/">gestionarlo correctamente cuando se trata de entornos de CI</a>.</p>
+<p>Para empezar a trabajar con GitHub Actions solo necesitas un repositorio alojado en GitHub.</p>
 </div>
 <div class="paragraph">
-<p>Por tanto, vamos a crear una imagen personalizada del contenedor de Jenkins basándonos en la imagen pública e instalándo Docker dentro del contenedor.
-Lo más adecuado es que construyas la imagen de Jenkins con Docker en la propia máquina donde lo vamos a ejecutar, es decir en la instancia de jenkins.</p>
+<p>Para ello seguimos los siguientes pasos:</p>
 </div>
-<div class="paragraph">
-<p>Conecta por ssh a la instancia de jenkins. Recuerda que el usuario de la instancia es <code>ubuntu</code>. Por tanto, la conexión a la misma  consistiría en ejecutar desde el terminal el comando</p>
-</div>
-<div class="listingblock">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Al lado de nuestro avatar de usuario, pulsamos en <code>+ &gt; New Repository</code></p>
+<div class="imageblock text-center thumb">
 <div class="content">
-<pre class="rouge highlight"><code>ssh ubuntu@MAQUINA_JENKINS</code></pre>
+<img src="modules/first-steps/images/github-new-repository.png" alt="github new repository">
 </div>
 </div>
-<div class="paragraph">
-<p>sustituyendo MAQUINA_JENKINS por la IP o el nombre DNS de la misma.</p>
+</li>
+<li>
+<p>Creamos un repositorio llamado <code>hello-action</code> de tipo <strong>público</strong>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-create-repository.png" alt="github create repository">
 </div>
-<div class="admonitionblock warning">
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Si utilizas la shell de la consola web de Google Cloud para conectar por ssh a la máquina, verás que estarás conectado como tu usuario de la UAL, del tipo <code>abc123</code>. En este caso RECUERDA sustituir <code>ubuntu</code> por tu usuario <code>abc123</code> en todos los comandos y ejemplos de este documento.</p>
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_creando_tu_primer_workflow">Creando tu primer workflow</h3>
+<div class="paragraph">
+<p>A continuación, vamos a añadir un workflow que muestra las características esenciales de GitHub Actions.</p>
+</div>
+<div class="paragraph">
+<p>Este ejemplo muestra como los trabajos de GitHub Actions pueden ser ejecutados automáticamente, donde corren y como interactuan con el código de tu repositorio.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clona en tu equipo el repositorio creado anteriormente.</p>
+</li>
+<li>
+<p>Crea un directorio <code>.github/workflows</code>.</p>
+</li>
+<li>
+<p>En este directorio, crea un fichero llamado <code>github-actions-demo.yml</code>.</p>
+</li>
+<li>
+<p>Copia el siguiente contenido YAML en el fichero anterior.</p>
+<div class="listingblock">
+<div class="title">github-actions-demo.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">GitHub Actions Demo</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="na">on</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">push</span><span class="pi">]</span> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">Explore-GitHub-Actions</span><span class="pi">:</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span> <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."</span> <i class="conum" data-value="5"></i><b>(5)</b>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Check out repository code</span> <i class="conum" data-value="6"></i><b>(6)</b>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span> <i class="conum" data-value="7"></i><b>(7)</b>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "💡 The ${{ github.repository }} repository has been cloned to the runner."</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "🖥️ The workflow is now ready to test your code on the runner."</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">List files in the repository</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">ls ${{ github.workspace }}</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">echo "🍏 This job's status is ${{ job.status }}."</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del workflow.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Cuando se ejecuta el workflow. En este caso al hacer push en cualquier rama.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Nombre del trabajo.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Máquina donde se ejecuta el trabajo.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Comando de terminal bash.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Nombre del paso.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Reutilización de un <code>action</code> creada por otro usuario. En este caso es la que se utiliza para obtener el código del repositorio.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Hacemos <code>commit</code> de los cambios y hacemos <code>push</code> a la rama remota</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>git add -A &amp;&amp; git commit
+git push origin main</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comprobando_el_resultado">Comprobando el resultado</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -813,300 +925,55 @@ Lo más adecuado es que construyas la imagen de Jenkins con Docker en la propia 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Realiza las actividades conectando a las instancias bien con el usuario <code>ubuntu</code> de la máquina, o bien si usas la shell de la consola web de Google Cloud, con tu usuario de la UAL (del tipo <code>abc123</code>). <strong>Se consistente</strong>, es decir, hazlo siempre con el mismo usuario. Se <strong>DESACONSEJA</strong> ejecutar los comandos como <code>root</code> mediante <code>sudo su</code>. Solamente en caso de que sea absolutamente necesario, ejecuta los comandos con <code>sudo</code> delante para tener permisos de <code>root</code> puntualmente. Si haces las actividades como <code>root</code>, tendrás problemas de permisos de acceso los archivos y carpetas, como por ejemplo a las claves SSH.</p>
+<p>Es posible que la <strong>GitHub Actions</strong> no se ejecute instantaneamente y tarde un poco en aparecer. Los recursos son compartidos entre todos los usuarios de GitHub.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Prueba que docker se ejecuta correctamente. Si la ejecución de <code>docker ps -a</code> te da error, prueba a ejecutarlo con <code>sudo</code>. Para evitar tener que escribir siempre <code>sudo</code> delante de cualquier comando docker`, ejecuta:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>sudo usermod -aG docker $USER</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Tras ello, reinicia la sesión. Prueba ahora sin <code>sudo</code>, a partir de ahora llama siempre a docker sin <code>sudo</code>. Más info <a href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">aquí</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Crea una carpeta <code>jenkins-docker</code> y crea el archivo <code>Dockerfile</code>. Usa el siguiente Dockerfile (descrito en esta entrada de <em>medium.com</em>:  <a href="https://medium.com/@gustavo.guss/jenkins-building-docker-image-and-sending-to-registry-64b84ea45ee9">Jenkins Building Docker Image and Sending to Registry</a>.</p>
-</div>
-<div class="listingblock">
-<div class="title">Dockerfile</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="docker"><span class="k">FROM</span><span class="s"> jenkins/jenkins:lts</span>
-
-<span class="k">USER</span><span class="s"> root</span>
-
-<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
-</span>apt-get <span class="nt">-y</span> <span class="nb">install </span>apt-transport-https <span class="se">\
-</span>    ca-certificates <span class="se">\
-</span>    curl <span class="se">\
-</span>    gnupg2 <span class="se">\
-</span>    software-properties-common <span class="o">&amp;&amp;</span> <span class="se">\
-</span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/<span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$ID</span><span class="s2">"</span><span class="si">)</span>/gpg <span class="o">&gt;</span> /tmp/dkey<span class="p">;</span> apt-key add /tmp/dkey <span class="o">&amp;&amp;</span> <span class="se">\
-</span>add-apt-repository <span class="se">\
-</span>    <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release<span class="p">;</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$ID</span><span class="s2">"</span><span class="si">)</span><span class="s2"> </span><span class="se">\
-</span><span class="s2">    </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> </span><span class="se">\
-</span><span class="s2">    stable"</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span>  apt-get update <span class="o">&amp;&amp;</span> <span class="se">\
-</span>  apt-get <span class="nt">-y</span> <span class="nb">install </span>docker-ce
-
-<span class="k">RUN </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> docker-ce
-
-<span class="k">RUN </span>usermod <span class="nt">-a</span> <span class="nt">-G</span> docker jenkins
-
-<span class="k">USER</span><span class="s"> jenkins</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Construimos la imagen a partir del Dockerfile:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker build <span class="nt">--tag</span> <span class="k"><strong></span>ualjjcanada<span class="k"></strong></span>/jenkins-docker:1.0 <span class="nb">.</span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Sustituye <strong>ualjjcanada/</strong> por tu usuario de Dockerhub si estás registrado, si no simplemente no lo pongas.</td>
-</tr>
-</table>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/docker-build-tag.png" alt="docker build tag">
-</div>
-<div class="title">Fig. 1. <code>docker build</code> de Jenkins con Docker</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/docker-build-tag-successfully.png" alt="docker build tag successfully">
-</div>
-<div class="title">Fig. 2. <code>docker build</code> successful</div>
-</div>
-<div class="paragraph">
-<p>Comprueba que la imagen ha sido creada, y está disponible en tu máquina:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>docker image ls</code></pre>
-</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/docker-image-ls.png" alt="docker image ls">
-</div>
-<div class="title">Fig. 3. <code>docker image ls</code></div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_publicación_en_google_container_registry">Publicación en Google Container Registry</h3>
-<div class="paragraph">
-<p>Opcionalmente podemos publicar nuestra imagen personalizada en DockerHub, o alternativamente el Google Container Registry. Más adelante se describirá cómo hacerlo.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ejecución_del_contenedor_de_jenkins">Ejecución del contenedor de Jenkins</h3>
-<div class="paragraph">
-<p>Ejecutamos el contenedor a partir de la imagen creada previamente.</p>
-</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Crear una carpeta para <code>jenkins_home</code> que configuraremos como volumen para que los datos de Jenkins se guarden fuera del contenedor.</p>
+<p>En la página principal del repositorio, selecciona <code>Actions</code> en el menú principal</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-menu-actions.png" alt="github menu actions">
+</div>
+</div>
+</li>
+<li>
+<p>En esta página podemos ver tanto el listado de workflows que tenemos en nuestro repositorio, como las ejecuciones de cada uno. Además podemos ver si ha habido éxito en la ejecución del workflow.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-all-workflows.png" alt="github all workflows">
+</div>
+</div>
+</li>
+<li>
+<p>Pulsamos en el nombre del commit (<code>hello action</code> en la imagen anterior) y accederemos a un resumen de la ejecución. En esta suelen aparecer las estadísticas de tiempo, los artefactos asociados y cada uno de los trabajos o jobs de nuestro workflow.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-action-summary.png" alt="github action summary">
+</div>
+</div>
+</li>
+<li>
+<p>Pulsamos en el nombre del trabajo (<code>Explore-GitHub-Actions</code> en la imagen anterior) y vemos una descripción de cada una de los pasos o steps del trabajo.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-action-job-summary.png" alt="github action job summary">
+</div>
+</div>
+</li>
+<li>
+<p>Además podemos ver el log de ejecución de cada uno de los pasos.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-action-job-step.png" alt="github action job step">
+</div>
+</div>
 </li>
 </ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nb">mkdir</span> ~/jenkins_home
-<span class="nb">chmod </span>777 ~/jenkins_home</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Ejecutamos el contenedor con <code>docker run</code>:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker run <span class="nt">-d</span> <span class="nt">--name</span> jenkins-docker <span class="nt">-p</span> 80:8080 <span class="nt">-p</span> 50000:50000 <span class="nt">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="nt">-v</span> ~/jenkins_home:/var/jenkins_home <span class="nt">--restart</span> always ualjjcanada/jenkins-docker:1.0</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Los parámetros de <code>docker run</code> son:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>--name jenkins-docker</code>: nombre que le asignamos al contenedor</p>
-</li>
-<li>
-<p><code>-p 80:8080</code>: jenkins se ejecutará en el puerto 80 en el host, que está mapeado al puerto 8080 del contenedor</p>
-</li>
-<li>
-<p><code>-v /var/run/docker.sock:/var/run/docker.sock</code>: volumen para compartir el docker socket (usado en la máquina host) con el contenedor.</p>
-</li>
-<li>
-<p><code>-v ~/jenkins_home:/var/jenkins_home</code>: mapea la carpeta local <code>~/jenkins_home</code> con la carpeta <code>/var/jenkins_home</code> del contenedor. En el contenedor, la carpeta HOME del usuario <em>jenkins</em> es <code>/var/jenkins_home</code>, donde Jenkins guarda todos los archivos que utiliza. Si se tira el contenedor o se actualiza, no se pierden los datos ya que se guardan "fuera" del contenedor.</p>
-</li>
-<li>
-<p><code>--restart always</code>: inicia el contenedor cuando se enciende la instancia.</p>
-</li>
-<li>
-<p><code>ualjjcanada/jenkins-docker:1.0</code>: imagen del contenedor a ejecutar, la que hemos construido en el paso anterior.</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Comprueba que el contenedor está ejecutándose con <code>docker ps</code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/docker-ps-jenkins.png" alt="docker ps jenkins">
-</div>
-<div class="title">Fig. 4. <code>docker ps</code></div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_configuración_básica_de_jenkins">Configuración básica de Jenkins</h3>
-<div class="paragraph">
-<p>A continuación se muestran los pasos a realizar en el inicio y configuración básica de Jenkins. Además, se describe la instalación de algunos plugins adicionales.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Conectamos a la IP/URL de la instancia con el navegador web. Aparecerá la ventana para introducir el password inicial. Para ver el password ejecuta:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>cat /home/ubuntu/jenkins_home/secrets/initialAdminPassword</code></pre>
-</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-unlock.png" alt="jenkins unlock">
-</div>
-<div class="title">Fig. 5. Contraseña inicial de Jenkins</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Selecciona Install suggested plugins.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-install-suggested-plugins.png" alt="jenkins install suggested plugins">
-</div>
-<div class="title">Fig. 6. Install suggested plugins</div>
-</div>
-<div class="paragraph">
-<p>Tras unos minutos, introduce los datos del  usuario administrador de Jenkins. Introduce un nombre de usuario y contraseña.</p>
-</div>
-<div class="paragraph">
-<p>Acepta el nombre de dominio de la máquina. Si aun no has registrado el nombre de dominio, lo puedes hacer más tarde en la configuración general de Jenkins.</p>
-</div>
-<div class="paragraph">
-<p>Jenkins está listo.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-welcome.png" alt="jenkins welcome">
-</div>
-<div class="title">Fig. 7. Bienvenida a Jenkins</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_instalación_de_plugins_adicionales">Instalación de plugins adicionales</h3>
-<div class="paragraph">
-<p>Vamos a instalar varios plugins: NodeJs, GitHub integration, Docker Pipeline, Warnings Next Generation, Jacoco, Code Coverage API, <a href="https://plugins.jenkins.io/google-container-registry-auth">Google Container Registry Auth</a>.</p>
-</div>
-<div class="paragraph">
-<p>Haz clic en <em>Manage Jenkins</em> &gt; <em>Manage Plugins</em>. En la pestaña <em>Available</em> busca <em>Github integration</em>, seleccionaló y pulsa en <em>Download now and install after restart</em>.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-plugins-github-integration.png" alt="jenkins plugins github integration">
-</div>
-<div class="title">Fig. 8. Instalación del plugin Github integration</div>
-</div>
-<div class="paragraph">
-<p>Repite los pasos para los plugins <em>Green Balls</em>, <em>NodeJS</em> y <em>Docker Pipeline</em>.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-plugins-nodejs.png" alt="jenkins plugins nodejs">
-</div>
-<div class="title">Fig. 9. Instalación del plugin NodeJS</div>
-</div>
-<div class="paragraph">
-<p>Marca <em>Restart Jenkins</em> para completar la instalación. Tras unos segundos, vuelve a iniciar sesión y tendrás los plugins instalados.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-plugins-restart.png" alt="jenkins plugins restart">
-</div>
-<div class="title">Fig. 10. Reiniciar para completar la instalación</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_configuración_las_tools_en_jenkins">Configuración las tools en Jenkins</h3>
-<div class="paragraph">
-<p>Tras la instalación del plugin <a href="https://plugins.jenkins.io/nodejs/"><em>NodeJS</em></a>, es necesario realizar la siguiente configuración:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ve a <em>Manage Jenkins</em>, <em>Global Tool configuration</em>.</p>
-</li>
-<li>
-<p>En <strong>NodeJS</strong>, añade un instalador (se recomienda la última versión disponible). Dale por nombre "nodejs" y marca instalar automáticamente.</p>
-</li>
-<li>
-<p>Guarda los cambios.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-tool-nodejs.png" alt="jenkins tool nodejs">
-</div>
-<div class="title">Fig. 11. Configuración de herramienta NodeJS</div>
-</div>
-<div class="paragraph">
-<p>De la misma forma, instala la última versión de Maven.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-tool-maven.png" alt="jenkins tool maven">
-</div>
-<div class="title">Fig. 12. Configuración de herramienta Maven</div>
 </div>
 </div>
 </div>
@@ -1115,1944 +982,390 @@ Lo más adecuado es que construyas la imagen de Jenkins con Docker en la propia 
 <h2 id="_primer_ejemplo_documentación_en_antora">Primer ejemplo: Documentación en Antora</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_creación_del_primer_proyecto_freestyle">Creación del primer proyecto freestyle</h3>
+<h3 id="_introducción_a_antora">Introducción a Antora</h3>
 <div class="paragraph">
-<p>Creamos el primer proyecto de Jenkins. Comprueba que Jenkins puede llamar a docker. Para ello crea un nuevo proyecto tipo freestyle.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-new-hello-docker.png" alt="jenkins new hello docker">
-</div>
-<div class="title">Fig. 13. Nuevo proyecto, freestyle</div>
+<p>Antora permite gestionar la documentación de un proyecto como si fuera código. Esto significa que el proceso de documentación se beneficia de las mismas prácticas utilizadas para producir software con éxito.</p>
 </div>
 <div class="paragraph">
-<p>En la sección <strong>Build</strong>, añade un bloque <strong>Execute shell</strong>. Pega estos comandos:</p>
+<p>Algunas de estas prácticas son:</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nb">whoami
-</span>git <span class="nt">--version</span>
-java <span class="nt">-version</span>
-docker <span class="nt">-v</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Guarda los cambios. Haz clic sobre <strong>Build now</strong>. Haz clic sobre la bolita verde para ver el la <em>salida por consola</em>.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-new-hello-docker-console-output.png" alt="jenkins new hello docker console output">
-</div>
-<div class="title">Fig. 14. Build now. Resultado del build</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-new-hello-docker-console-success.png" alt="jenkins new hello docker console success">
-</div>
-<div class="title">Fig. 15. Salida por consola</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Almacenar el contenido en un sistema de control de versiones.</p>
+</li>
+<li>
+<p>Separar el contenido, la configuración y la presentación.</p>
+</li>
+<li>
+<p>Aprovechar la automatización para la compilación, validación, verificación y publicación.</p>
+</li>
+<li>
+<p>Reutilización de materiales compartidos (DRY).</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Por consola se visualiza el resultado de ejecutar los comandos dentro del contenedor. Como puedes ver, <code>git</code> y <code>java</code> están instalados, venían ya en la imagen de jenkins:lts de la que hemos partido en la definición del Dockerfile. Además, <code>docker</code> también está disponible, se ha instalado correctamente mediante la definición incluida en el Dockerfile.</p>
+<p>Antora ayuda a incorporar estas prácticas en el flujo de trabajo de documentación. Como resultado, la documentación es mucho más fácil de gestionar, mantener y mejorar.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creación_del_primer_pipeline">Creación del primer pipeline</h3>
-<div class="sect3">
-<h4 id="_pipeline_sobre_el_nodo_master">Pipeline sobre el nodo master</h4>
+<h3 id="_creación_del_repositorio_2">Creación del repositorio</h3>
 <div class="paragraph">
-<p>Creamos el primer proyecto de Jenkins tipo pipeline. Vamos a darle el nombre <code>hello-maven-pipeline-on-master-node</code>. Este pipeline se ejecutará sobre el nodo (<code>agent</code>) master, es decir, sobre el mismo contenedor que está ejecutando Jenkins.</p>
+<p>Para empezar a trabajar solo necesitas un repositorio alojado en GitHub de tipo <strong>público</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Copia la siguiente definición de pipeline en el bloque <strong>Pipeline</strong>, <strong>Pipeline script</strong>.</p>
+<p>En este repositorio subiremos el contenido de <a href="https://github.com/ualcnsa/cicd/archive/232cf038086dc798e51d5201bba9945277562851.zip">un proyecto de documentación en Antora</a>.</p>
 </div>
-<div class="listingblock">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Descomprimimos el archivo en un directorio</p>
+</li>
+<li>
+<p>Entramos al directorio y hacemos <code>git init</code></p>
+</li>
+<li>
+<p>Creamos la rama principal <code>git checkout -b main</code></p>
+</li>
+<li>
+<p>Hacemos commit de todos los archivos con <code>git add -A &amp;&amp; git commit</code></p>
+</li>
+<li>
+<p>Añadimos el remote de nuestro repositorio <code>git remote add origin &lt;dirección-repositorio&gt;</code></p>
+</li>
+<li>
+<p>Subimos la rama local <code>git push origin main`</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Nuestro repositorio tiene que tener la siguiente estructura:</p>
+</div>
+<div class="imageblock text-center thumb">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
-    <span class="n">agent</span> <span class="n">any</span>
-    <span class="n">tools</span> <span class="o">{</span>
-        <span class="n">maven</span> <span class="s1">'Default Maven'</span> <i class="conum" data-value="1"></i><b>(1)</b>
-    <span class="o">}</span>
+<img src="modules/first-steps/images/github-antora-files.png" alt="github antora files">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creando_el_workflow_para_antora">Creando el workflow para Antora</h3>
+<div class="paragraph">
+<p>A continuación, vamos a añadir un workflow que construya nuestro proyecto en Antora.</p>
+</div>
+<div class="paragraph">
+<p>Al tratarse de un proyecto basado en NodeJS, utilizaremos una imagen Docker con éste instalado y seguiremos un proceso de construcción común a éste tipo de proyectos.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para más información sobre la construcción de proyectos Antora <a href="https://docs.antora.org/antora/latest/install-and-run-quickstart/" class="bare">https://docs.antora.org/antora/latest/install-and-run-quickstart/</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crea un directorio <code>.github/workflows</code>.</p>
+</li>
+<li>
+<p>En este directorio, crea un fichero llamado <code>build.yml</code>.</p>
+</li>
+<li>
+<p>Copia el siguiente contenido YAML en el fichero anterior.</p>
+<div class="listingblock">
+<div class="title">build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
 
-    <span class="n">stages</span> <span class="o">{</span>
-        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">steps</span> <span class="o">{</span>
-                <span class="n">sh</span> <span class="s1">'''
-                    java -version
-                    mvn -v
-                  '''</span> <i class="conum" data-value="2"></i><b>(2)</b>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre>
+<span class="na">on</span><span class="pi">:</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># The type of runner that the job will run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">container</span><span class="pi">:</span> <span class="s">node:16-alpine</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Antora project</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">cp -R node_modules/@antora/lunr-extension/supplemental_ui/* supplemental-ui/ </span><i class="conum" data-value="6"></i><b>(6)</b>
+          <span class="s">npx antora local-antora-playbook.yml --fetch </span><i class="conum" data-value="7"></i><b>(7)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Utiliza la instalación de Maven que hemos hecho en la sección anterior, y le dimos el nombre <code>Default Maven</code>.</td>
+<td>Se ejecuta al hacer <strong>push</strong> en la rama <strong>main</strong> o un <strong>pull request</strong> con destino <strong>main</strong>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>En la shell ejecutará los comandos para mostrar las versiones de Java y Maven.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Haz clic sobre <strong>Build now</strong>, y visualiza la consola. Como parte de la salida, se debe visualizar algo así (puede que los números de versiones varíen):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="o">[</span>Pipeline] sh
-+ java <span class="nt">-version</span>
-openjdk version <span class="s2">"11.0.14"</span> 2022-01-18
-OpenJDK Runtime Environment Temurin-11.0.14+9 <span class="o">(</span>build 11.0.14+9<span class="o">)</span>
-OpenJDK 64-Bit Server VM Temurin-11.0.14+9 <span class="o">(</span>build 11.0.14+9, mixed mode<span class="o">)</span>
-+ mvn <span class="nt">-v</span>
-Apache Maven 3.8.4 <span class="o">(</span>9b656c72d54e5bacbed989b64718c159fe39b537<span class="o">)</span>
-Maven home: /var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/Default_Maven
-Java version: 11.0.14, vendor: Eclipse Adoptium, runtime: /opt/java/openjdk
-Default locale: en, platform encoding: UTF-8
-OS name: <span class="s2">"linux"</span>, version: <span class="s2">"5.11.0-1029-gcp"</span>, <span class="nb">arch</span>: <span class="s2">"amd64"</span>, family: <span class="s2">"unix"</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Lanzar las construcciones de proyectos en el nodo máster puede acarrear problemas de seguridad. De hecho, Jenkins avisa de que esta configuración es inadecuada, y recomienda configurar agentes independientes donde lanzar las ejecuciones de los proyectos.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/issue-build-on-master.png" alt="issue build on master">
-</div>
-<div class="title">Fig. 16. Aviso de evitar ejecuciones en el nodo máster de Jenkins</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_pipeline_con_un_contenedor_como_agente">Pipeline con un contenedor como agente</h4>
-<div class="paragraph">
-<p>Otra alternativa es que el pipeline se ejecute, en lugar de en el nodo master, en un nodo tipo "agente" que se creará <em>ex profeso</em> a partir de un contenedor Docker disponible de DockerHub.</p>
-</div>
-<div class="paragraph">
-<p>A continuación creamos el segundo proyecto de Jenkins tipo pipeline. Vamos a darle el nombre <code>hello-maven-pipeline-on-container-node</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
-    <span class="n">agent</span> <span class="o">{</span>
-        <span class="n">docker</span> <span class="o">{</span>
-            <span class="n">image</span> <span class="s1">'maven:3.6-openjdk-8'</span> <i class="conum" data-value="1"></i><b>(1)</b>
-            <span class="n">args</span> <span class="s1">'-v $HOME/.m2:/root/.m2'</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="n">stages</span> <span class="o">{</span>
-        <span class="n">stage</span><span class="o">(</span><span class="s1">'Build'</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">steps</span> <span class="o">{</span>
-                <span class="n">sh</span> <span class="s1">'''
-                    java -version
-                    mvn -v
-                  '''</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Entre las <a href="https://hub.docker.com/_/maven">imágenes de Maven</a> disponibles están <code>3.6-openjdk-11</code>, <code>3.6-openjdk-15</code>, etc</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Te dará error. En la máquina Jenkins, sobre el S.O. host, hay que abrir permisos en el socket de Docker para que desde dentro del contenedor Jenkins permita crear otros contenedores <em>hermanos</em>. Para ello modifica los permisos así:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>sudo chmod 666 /var/run/docker.sock</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Tras ello deben construirse correctamente. Sin embargo, abrir permisos a ese archivo supone ciertos problemas de seguridad: <em>Avoid workarounds like this which could be a big potential security threat. The result of your chmod practically gives all local users read and write permissions to the docker-socket which allows anyone to interfere with your docker images.</em> (<a href="https://serverfault.com/questions/821062/how-to-run-sudo-chmod-666-var-run-docker-sock-on-ubuntu-before-the-services">fuente</a>).</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Para que tras reiniciar la máquina se mantengan los permisos del socket de Docker:</p>
-</div>
-<div class="paragraph">
-<p>Crea el archivo <code>/etc/rc.local</code>, y añade el siguiente contenido:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>#!/bin/sh -e
-chmod 666 /var/run/docker.sock</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Por último, dale los permisos adecuados al archivo <code>/etc/rc.local</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>sudo chmod 755 /etc/rc.local</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Tras ello reinicia la máquina. Al volver a entrar, comprueba que el socket de Docker tiene los permisos adecuados:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code>$ ls -la /var/run/docker.sock
-srw-rw-rw- 1 root docker 0 Mar  2 19:24 /var/run/docker.sock</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Otros ejemplos similares con contenedores NodeJS están disponibles en la <a href="https://www.jenkins.io/doc/book/pipeline/docker/">documentación de Jenkins</a></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_usando_varios_contenedores_como_agente">Usando varios contenedores como agente</h4>
-<div class="paragraph">
-<p>Es habitual tener varias tecnologías en un mismo proyecto. Por ejemplo, un repositorio puede tener tanto un back-end basado en Java como un front-end basado en JavaScript. Combinar Docker y Pipeline permite usar diferentes agentes en diferentes fases (<em>stages</em>) del pipeline:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
-    <span class="n">agent</span> <span class="n">none</span>
-    <span class="n">stages</span> <span class="o">{</span>
-        <span class="n">stage</span><span class="o">(</span><span class="s1">'Back-end'</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">agent</span> <span class="o">{</span>
-                <span class="n">docker</span> <span class="o">{</span> <span class="n">image</span> <span class="s1">'maven:3.8.1-adoptopenjdk-11'</span> <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="n">steps</span> <span class="o">{</span>
-                <span class="n">sh</span> <span class="s1">'mvn --version'</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="n">stage</span><span class="o">(</span><span class="s1">'Front-end'</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">agent</span> <span class="o">{</span>
-                <span class="n">docker</span> <span class="o">{</span> <span class="n">image</span> <span class="s1">'node:16.13.1-alpine'</span> <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="n">steps</span> <span class="o">{</span>
-                <span class="n">sh</span> <span class="s1">'node --version'</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_conexión_con_la_máquina_de_despliegue">Conexión con la máquina de despliegue</h3>
-<div class="paragraph">
-<p>Para automatizar el despliegue sobre la instancia que tenemos creada para ello, deberás permitir que Jenkins ejecute  comandos sobre la máquina de despliegue a través de SSH. Para ello, la instancia Jenkins debe poder conectarse a la instancia de despliegue mediante una conexión SSH basada en autenticación por pareja de claves pública/privada, que ha demostrado ser más seguro sobre la autenticación estándar de nombre de usuario/contraseña.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/deploy-schema-full.png" alt="deploy schema full">
-</div>
-<div class="title">Fig. 17. Esquema de despliegue con Jenkins</div>
-</div>
-<div class="paragraph">
-<p>Para ello, los pasos que se detallan a continuación permiten:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>generar una nueva pareja de claves que usaremos para el despliegue,</p>
-</li>
-<li>
-<p>copiar la clave pública generada en la instancia de despliegue,</p>
-</li>
-<li>
-<p>y por último probar que la conexión se realiza correctamente.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Ejecuta los siguientes pasos:</p>
-</div>
-<div class="sect3">
-<h4 id="_generar_la_nueva_pareja_de_claves_de_despliegue">Generar la nueva pareja de claves de despliegue</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Conecta por SSH a la máquina Jenkins: <code>ssh ubuntu@<em>instancia-jenkins</em></code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/ssh-from-developer-to-jenkins.png" alt="ssh from developer to jenkins">
-</div>
-<div class="title">Fig. 18. Conexión SSH a la instancia Jenkins</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Crea la carpeta donde se va a guardar la nueva pareja de claves: <code>mkdir /home/ubuntu/jenkins_home/.ssh</code></p>
-</li>
-<li>
-<p>Crea una pareja de claves ssh de despliegue: <code>ssh-keygen -t rsa -b 4096</code></p>
-</li>
-<li>
-<p>Cuando pida el <strong>nombre</strong>, escribe el nuevo nombre <strong>id_rsa_deploy</strong> junto con la ubicación donde Jenkins va a buscar las claves de forma predeterminada, que es: <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_rsa_deploy</strong></code></p>
-</li>
-<li>
-<p>Por último, deja la contraseña en blanco (pulsa ENTER): <code>Enter passphrase (empty for no passphrase):</code></p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Esto crea la clave privada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy</strong></code> y una clave pública asociada en <code>/home/ubuntu/jenkins_home/.ssh/<strong>id_dsa_deploy.pub</strong></code>. Esta nueva pareja de claves la usaremos exclusivamente para el despliegue de nuestros proyectos. Al haberlos guardado en la carpeta <code>/home/ubuntu/jenkins_home/</code> los archivos están accesibles dentro del contenedor, porque recuerda que esa carpeta la habíamos mapeado con la carpeta <code>/var/jenkins_home</code> del contenedor.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-ls-deploy-keys.png" alt="jenkins ls deploy keys">
-</div>
-<div class="title">Fig. 19. Pareja de claves <em>id_rsa_deploy</em></div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_copiar_la_clave_pública_a_la_instancia_de_despliegue">Copiar la clave pública a la instancia de despliegue</h4>
-<div class="olist arabic">
-<ol class="arabic" start="6">
-<li>
-<p>Muestra el contenido de la clave pública: <code>cat /home/ubuntu/jenkins_home/.ssh/id_rsa_deploy.pub</code></p>
-</li>
-<li>
-<p>Copia el contenido: con el ratón, selecciona el contenido de la clave, desde “ssh-rsa” hasta el final, y pulsa ENTER (o CTRC+C)</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-cat-public-key.png" alt="jenkins cat public key">
-</div>
-<div class="title">Fig. 20. Copia el contenido de <em>id_rsa_deploy.pub</em></div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Debido a que algunos terminales añaden saltos delinea al copiar texto desde el terminal, como ocurre con cloud shell de GCP, es <em>recomendable</em> copiar el contenido de la clave pública en cualquier editor de texto "plano" (Notepad++, Sublime, VS Code, etc) y eliminar los saltos de línea, si los hubiera.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="8">
-<li>
-<p>Ahora pégalo en tu PC, lo necesitaremos más adelante.</p>
-</li>
-<li>
-<p>Desconecta de la máquina Jenkins: <code>exit</code></p>
-</li>
-<li>
-<p>Conecta por ssh a la instancia de despliegue</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/ssh-from-developer-to-deploy.png" alt="ssh from developer to deploy">
-</div>
-<div class="title">Fig. 21. Conexión SSH a la instancia Jenkins</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="11">
-<li>
-<p>Edita el archivo <code>authorized_keys</code>:  <code>nano home/ubuntu/.ssh/authorized_keys</code></p>
-</li>
-<li>
-<p>Ese archivo ya tenía una clave pública, la correspondiente a tu pareja de claves personal que inyectamos en la creación de la instancia con Terraform (por eso has podido conectar por ssh a esa máquina). Pega el contenido de la clave pública de despliegue. Ahora debe tener 2 claves públicas.</p>
-</li>
-<li>
-<p>Ya puedes desconectar de la instancia de despliegue.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_prueba_de_la_conexión_desde_jenkins_a_despliegue">Prueba de la conexión desde jenkins a despliegue</h4>
-<div class="paragraph">
-<p>Vamos a probar que funciona:</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenkins-ssh-to-deploy.png" alt="jenkins ssh to deploy">
-</div>
-<div class="title">Fig. 22. Conexión SSH desde la instancia Jenkins a la de despliegue</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="14">
-<li>
-<p>Conecta de nuevo a la instancia jenkins y prueba la conexión ssh a la instancia de despliegue. Recuerda que puesto que Jenkins se está ejecutando como un contenedor, debes probar la conexión ssh desde dentro del contenedor:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker <span class="nb">exec</span> <span class="nt">-it</span> jenkins-docker ssh ubuntu@<em>instancia_deploy</em> <span class="nt">-i</span> /var/jenkins_home/.ssh/id_rsa_deploy</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>En el comando anterior:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>docker exec -it</code> indica ejecutar un comando desde dentro del contenedor</p>
-</li>
-<li>
-<p><code>jenkins-docker</code> es el nombre del contenedor</p>
-</li>
-<li>
-<p><code>ssh ubuntu@<em>instancia_deploy</em> -i /var/jenkins_home/.ssh/id_rsa_deploy</code> es el comando a ejecutar en el contenedor. En este caso, <code>ssh</code> con el parámetro <code>-i &#8230;&#8203;</code> para indica la clave privada que debe usar para conectar.</p>
-</li>
-<li>
-<p>Recuerda que <code>/var/jenkins_home</code> es la carpeta HOME del usuario <em>jenkins</em> dentro del contenedor, y <em>jenkins</em> es el usuario del contenedor que ejecuta Jenkins.</p>
-</li>
-</ul>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="15">
-<li>
-<p>La primera vez que realizas una conexión ssh desde un usuario en una máquina origen a una destino, te pregunta si deseas almacenar la clave de host de destino en la lista de hosts conocidos (<code>known_hosts</code>) de tu máquina origen. Contesta: <code>yes</code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/ssh-host-autentication.png" alt="ssh host autentication">
-</div>
-<div class="title">Fig. 23. Validar la clave del host: <strong>yes</strong></div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="16">
-<li>
-<p>Si todo ha ido bien, la conexión se ha debido realizar. Sal con <code>exit</code>. Si no ha sido así, verifica que la ruta al archivo de la clave privada es correcta, y que el nombre de la máquina de despliegue es correcto.</p>
-</li>
-<li>
-<p>Comprueba que la clave de host de la máquina de destino (despliegue) se ha guardado en la máquina origen (jenkins) en el archivo <code>~/.ssh/known_hosts</code> del usuario que ha ejecutado el comando ssh, en nuestro caso, del usuario jenkins de contenedor: <code>docker exec -it jenkins-docker cat /var/jenkins_home/.ssh/known_hosts</code></p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/ssh-known_hosts.png" alt="ssh known hosts">
-</div>
-<div class="title">Fig. 24. Contenido del archivo <strong>known_hosts</strong> en el contenedor</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="18">
-<li>
-<p>Puedes comprobar también el contenido de <em>known_hosts</em> en el archivo <code>/home/ubuntu/jenkins_home/.ssh/known_hosts</code>, ya que recuerda que hay un volumen mapeado entre la carpeta local <code>/home/ubuntu/jenkins_home</code> y la carpeta del contenedor <code>/var/jenkins_home</code>.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/ssh-known_hosts-local.png" alt="ssh known hosts local">
-</div>
-<div class="title">Fig. 25. Contenido del archivo <strong>known_hosts</strong> en la carpeta local</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="19">
-<li>
-<p>Ahora que la conexión por SSH entre la máquina Jenkins y la máquina de despliegue es correcta, vamos a hacer que Jenkins automatice la ejecución de comandos sobre la máquina de despliegue: entra en Jenkins y añade el siguiente comando al proyecto <em>hello_docker</em> existente, sustituyendo <em>MAQUINA_DEPLOY</em> por el nombre DNS de la máquina de despliegue.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">ssh <span class="nt">-i</span> ~/.ssh/id_rsa_deploy ubuntu@MAQUINA_DEPLOY <span class="s2">"pwd &amp;&amp; ls -la"</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Como aclaración de este comando:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>el parámetro <code>-i</code> indica la clave privada que queremos usar en la conexión ssh</p>
-</li>
-<li>
-<p><code>"pwd &amp;&amp; ls -la"</code> son comandos básicos que ejecuta sobre la máquina remota. Hemos indicado estos comandos simplemente para probar que la conexión se realiza correctamente.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenksin-hello-docker-ssh-to-deploy.png" alt="jenksin hello docker ssh to deploy">
-</div>
-<div class="title">Fig. 26. Modificación del proyecto para que ejecute un comando sobre la instancia de despliegue</div>
-</div>
-<div class="paragraph">
-<p>Tras ejecutar el proyecto en Jenkins, el resultado debe ser correcto.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/first-steps/images/jenksin-hello-docker-ssh-to-deploy-output.png" alt="jenksin hello docker ssh to deploy output">
-</div>
-<div class="title">Fig. 27. Salida por consola. El comando se ha ejecutado correctamente.</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<h1 id="_aplicación_en_node_js" class="sect0">Aplicación en Node.js</h1>
-<div class="openblock partintro">
-<div class="content">
-<div class="exampleblock">
-<div class="title">Objetivos</div>
-<div class="content">
-<div class="paragraph">
-<p>Como construir y desplegar apliaciones web Node.js con Jenkins</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dockerizar la aplicacion Node.js para facilitar su despliegue</p>
-</li>
-<li>
-<p>Desplegar la aplicación Node.js tanto de forma nativa como mediante contenedor</p>
-</li>
-<li>
-<p>Definir un pipeline para automatizar las etapas más habituales en CI/CD</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hola_mundo_en_node_js"><em>Hola mundo</em> en Node.js</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>A continuación se muestra un ejemplo de <strong>integración y despliegue continuos en Jenkins de un proyecto NodeJs</strong>. Los pasos a realizar son similares al ejemplo anterior con Java, el decir, el pipeline tendrá las mismas fases; eso si, adaptaremos las ordenes o comandos a ejecutar a la tecnología Node.js.</p>
-</div>
-<div class="paragraph">
-<p>Al igual con el ejemplo anterior en Java, en primer lugar trabajaremos con la aplicación Node.js sin <em>dockerizar</em>, y después <em>dockerizaremos</em> la aplicación. La mayoría de los pasos siempre los ejecutaremos primero en local, y tras comprobar que funcionan correctamente, los automatizaremos en Jenkins.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>La implementación de la integración y despliegue continuos permitirá que, para cada cambio de código en el repositorio, Jenkins será notificado y descargará los cambios, instalará las dependencias y ejecutará los tests. Si los tests pasan correctamente, Jenkins desplegará la aplicación en el servidor de despliegue. Y si fallan, se notificará al desarrollador.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_construcción_y_ejecución_en_local">Construcción y ejecución en local</h3>
-<div class="paragraph">
-<p>Nos vamos a basar en  el proyecto <em>HelloWorld</em> en NodeJs, disponible en <a href="https://github.com/ualcnsa/nodeapp" class="bare">https://github.com/ualcnsa/nodeapp</a>. Necesitarás poder hacer cambios sobre el mismo, así que crea un <em>fork</em> y trabaja con tu <em>fork</em> a partir de ahora.
-Tras clonar tu <em>fork</em> a local, haz checkout del tag <code>v0.1</code> en una nueva rama cuyo nombre sea tu usuario de la UAL, para que tus archivos estén en el estado inicial de este tutorial:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>git checkout tags/v0.1 -b &lt;branch&gt; <i class="conum" data-value="1"></i><b>(1)</b></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Usa tu nombre de usuario de la UAL como nombre de la rama.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Veamos los archivos que componen la aplicación:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>El archivo <code>package.json</code> contienen información básica de la aplicación y las dependencias:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>express</strong>: Node framework</p>
-</li>
-<li>
-<p><strong>jest</strong>: framework de testing para NodeJs (existen numerosos framework de testing en NodeJs, como Jasmine, Mocha, Tape, etc.)</p>
-</li>
-<li>
-<p><strong>supertest</strong>: proporciona abstracción a alto nivel para testing HTTP</p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">package.json</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nodeapp"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"src/main.js"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node src/main"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
-   </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"express"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.17.3"</span><span class="w">
-   </span><span class="p">},</span><span class="w">
-   </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^27.5.1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"supertest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.2.2"</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span></code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Comprueba que los archivos <code>main.js</code>, <code>app.js</code> y  <code>app.test.js</code>, así como la carpeta <code>services</code>, estén dentro de una carpeta <code>src</code>. Si no es así, crea la carpeta <code>src</code> y muevelos dentro. Revisa el conetenido de <code>package.json</code> para que sea idéntico al mostrado aquí.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/node-files-initial-point.png" alt="node files initial point">
-</div>
-<div class="title">Fig. 28. Archivos y carpetas en el estado inicial</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Para instalar las dependencias ejecuta <code>npm install</code>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>El archivo principal del proyecto <code>src/main.js</code> se encarga de arrancar la aplicación en el puerto 3000.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">src/main.js</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="js"><span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./app</span><span class="dl">"</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Example app listening on port </span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
-<span class="p">})</span></code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>El archivo <code>src/app.js</code> es un sencillo <em>hola mundo</em> con dos rutas:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>/</code> devuelve <code>"Hello World!"</code></p>
-</li>
-<li>
-<p><code>/:nameToSalute</code> devuelve <code>"Hello " + nameToSalute + "!"</code> mediante el servicio <code>HelloWordService</code></p>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">src/app.js</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="js"><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">const</span> <span class="nx">HelloWordService</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="dl">"</span><span class="s2">./services/hello-world</span><span class="dl">"</span> <span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">})</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/:nameToSalute</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="k">new</span> <span class="nx">HelloWordService</span><span class="p">().</span><span class="nx">greet</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">nameToSalute</span><span class="p">));</span>
-<span class="p">})</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">app</span></code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>El archivo <code>src/services/hello-world.js</code> es un servicio de <em>hola mundo</em>.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">src/services/hello-world.js</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="js"><span class="kd">class</span> <span class="nx">HelloWordService</span> <span class="p">{</span>
-  <span class="cm">/**
-    * @description Create an instance of HelloWordService
-    */</span>
-  <span class="kd">constructor</span> <span class="p">()</span> <span class="p">{</span>
-
-  <span class="p">}</span>
-
-  <span class="cm">/**
-    * @description Says Hello to a given name
-    * @param nameToHello {string} Name to greet
-    * greet name
-    * @returns a string that starts with Hello
-    */</span>
-  <span class="nx">greet</span> <span class="p">(</span> <span class="nx">nameToHello</span> <span class="p">)</span> <span class="p">{</span>
-
-      <span class="k">return</span> <span class="dl">"</span><span class="s2">Hello </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">nameToHello</span><span class="o">+</span><span class="dl">"</span><span class="s2">!</span><span class="dl">"</span><span class="p">;</span>
-
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">HelloWordService</span><span class="p">;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para ejecutar la aplicación, ejecuta: <code>npm start</code></p>
-</div>
-<div class="paragraph">
-<p>Puedes ver la aplicación en el navegador accediendo a <a href="http://localhost:3000">http://localhost:3000</a> o a <a href="http://localhost:3000/nombre">http://localhost:3000/nombre</a></p>
-</div>
-<div class="paragraph">
-<p><strong>Test unitarios y end2end</strong></p>
-</div>
-<div class="paragraph">
-<p>En primer lugar tenemos un <strong>test unitario</strong> para probar el servicio <code>HelloWorldService</code> que comprueba que la salida sea la esperada.</p>
-</div>
-<div class="paragraph">
-<p>Se guardará en la carpeta <code>src/services/</code> con el nombre <code>hello-world.test.js</code>.</p>
-</div>
-<div class="listingblock">
-<div class="title">src/services/hello-world.test.js</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="js"><span class="kd">const</span> <span class="nx">HelloWordService</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./hello-world</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">HelloWordService Test</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">helloWordService</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelloWordService</span><span class="p">();</span>
-
-  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">says 'Hello John!' to greet John</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">helloWordService</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello John!</span><span class="dl">"</span><span class="p">);</span>
-  <span class="p">});</span>
-
-<span class="p">});</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>En segundo lugar tenemos varios <strong>test end2end</strong>. El primer test va a navegar a la raiz de la aplicación (<code>/</code>) y verificar que la página responde con el texto esperado <code>Hello World!</code>. El segundo test navega a <code>/John</code> y comprueba que la página responde con <code>Hello John!</code>.</p>
-</div>
-<div class="listingblock">
-<div class="title">src/app.test.js</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="js"><span class="kd">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">supertest</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./app</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET /</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">//navigate to root and check the the response is "Hello World!"</span>
-    <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">responds with "Hello World!"</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">).</span><span class="nx">expect</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-
-<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET /John</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">//navigate to /John and check the the response is "Hello John!"</span>
-    <span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">responds with "Hello John!"</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/John</span><span class="dl">'</span><span class="p">).</span><span class="nx">expect</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello John!</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">});</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para ejecutar los tests: <code>npm test</code></p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/node-jest-passed.png" alt="node jest passed">
-</div>
-<div class="title">Fig. 29. npm test</div>
-</div>
-<div class="paragraph">
-<p>Si todo funciona correctamenente, haz <strong>commit</strong> y <strong>push</strong> de tu rama.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_creación_del_pipeline_en_jenkins">Creación del pipeline en Jenkins</h3>
-<div class="paragraph">
-<p>Definimos un nuevo proyecto tipo Pipeline. Añadimos la descripción del pipeline:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
-  <span class="n">agent</span> <span class="n">any</span>
-
-  <span class="n">tools</span> <span class="o">{</span>
-    <span class="c1">// In Global tools configuration, install Node configured as "nodejs"</span>
-    <span class="n">nodejs</span> <span class="s2">"nodejs"</span>
-  <span class="o">}</span>
-
-  <span class="n">stages</span> <span class="o">{</span>
-    <span class="n">stage</span><span class="o">(</span><span class="s1">'Cloning Git'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">git</span> <span class="nl">branch:</span> <span class="s1">'MI_RAMA'</span><span class="o">,</span> <span class="nl">url:</span> <span class="s1">'https://github.com/MI_USUARIO/nodeapp'</span> <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="n">stage</span><span class="o">(</span><span class="s1">'Install dependencies'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">sh</span> <span class="s1">'npm install'</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-         <span class="n">sh</span> <span class="s1">'npm test'</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Cambia el nombre de la rama y la URL del repositorio por las tuyas.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>El resultado sera:</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-node-pipeline1.png" alt="jenkins node pipeline1">
-</div>
-<div class="title">Fig. 30. Nodeapp pipeline</div>
-</div>
-<div class="paragraph">
-<p>La evolución de las métricas del proyecto es uno de los indicadores que habitualmente muestra Jenkins como <em>feedback</em> para los desarrolladores. Vamos a <strong>publicar los resultados de los test</strong> en un gráfico.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Editamos <code>package.json</code> y añadimos el script <code>test-jenkins</code> para generar los resultados de los test en formato xml que usará Jenkins para generar el gráfico, y la dependencia necesaria para ello:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">package.json: jenkins-test y dependencia mocha-junit-reporter</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="w">  </span><span class="err">...</span><span class="w">
-  </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node src/main"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"test-jenkins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest --reporters=default --reporters=jest-junit"</span><span class="p">,</span><span class="w"> <i class="conum" data-value="1"></i><b>(1)</b>
-  </span><span class="p">}</span><span class="err">,</span><span class="w">
-  </span><span class="nl">"jest-junit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> <i class="conum" data-value="2"></i><b>(2)</b>
-    </span><span class="nl">"outputDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./coverage/"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"outputName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test.results.xml"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"usePathForSuiteName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-  </span><span class="p">}</span><span class="err">,</span><span class="w">
-  </span><span class="err">...</span><span class="w">
-  </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"jest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^27.5.1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"jest-junit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^13.0.0"</span><span class="p">,</span><span class="w"> <i class="conum" data-value="3"></i><b>(3)</b>
-    </span><span class="nl">"supertest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.2.2"</span><span class="w">
-  </span><span class="p">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Añadimos el script <code>test-jenkins</code> que define los formatos de salida de los test: el normal y usando el plugin <code>jest-junit</code> para formato xml.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Configuración para <code>jest-junit</code> que genera los resultados de los test en el archivo <code>./coverage/test.results.xml</code></td>
+<td>Podemos lanzar el workflow cuando queramos.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Dependencia a <code>jest-junit</code> que permite generar los resultados de los test en xml.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Podemos probar en local, llamamos a la ejecución de los test y generación del xml: <code>npm run test-jenkins</code>.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Añade al <code>.gitignore</code> la carpeta <code>/coverage</code>, ya que su contenido se generará al lanzar los tests y no se debe guardar en el repositorio.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Guarda los cambios en el repositorio, para que estén actualizados cuando los lea  Jenkins.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Actualizamos el pipeline, la fase <code>Test</code>:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-         <span class="n">sh</span> <span class="s1">'npm run test-jenkins'</span>
-      <span class="o">}</span>
-      <span class="n">post</span> <span class="o">{</span>
-        <span class="n">success</span> <span class="o">{</span>
-          <span class="n">junit</span> <span class="s1">'**/test*.xml'</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Guardamos los cambios. Tras un par de ejecuciones del build, se visualiza el gráfico Test Result Trend:</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-nodeapp-pipeline-test-result-trend.png" alt="jenkins nodeapp pipeline test result trend">
-</div>
-<div class="title">Fig. 31. Publicado el gráfico de tendencia de los test</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_webhook_para_construcción_automática"><strong>Webhook</strong> para construcción automática</h3>
-<div class="paragraph">
-<p>Configura en GitHub un nuevo <em>Webhook</em> para que tras cada cambio de código en el repositorio, Jenkins sea notificado y lance automáticamente la construcción del pipeline:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>En GitHub, seleccionamos el repositorio sobre el que queremos activar la construcción en Jenkins y hacemos clic en: <em>Settings &gt; WebHooks &gt; Add webhook</em></p>
-</li>
-<li>
-<p>En Payload URL:</p>
-<div class="literalblock">
-<div class="content">
-<pre>http://{YOUR_JENKINS_URL}/github-webhook/</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-webhook-github.png" alt="jenkins webhook github">
-</div>
-<div class="title">Fig. 32. Nuevo Webhook</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Finalmente, en la configuración del proyecto en Jenkins, en la sección Build Trigers, marca la opción <em>GitHub hook tirigger from GITScm polling</em></p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-webhook-build-triger.png" alt="jenkins webhook build triger">
-</div>
-<div class="title">Fig. 33. Activar el Webhook en build trigers</div>
-</div>
-<div class="paragraph">
-<p>A partir de ahora, cuando el repositorio en GitHub reciba un push notificará a Jenkins para que lance la construcción automáticamente.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_informe_de_cobertura">Informe de cobertura</h3>
-<div class="paragraph">
-<p>Como ya sabemos, la cobertura de código nos va a ofrecer un valor directamente relacionado con la calidad de los juegos de prueba. Para obtener la cobertura y publicarla en Jenkins, debemos hacer:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Añadir a <code>package.json</code> un script para cobertura que permite obtener la cobertura con Jest.</p>
-</li>
-<li>
-<p>Modificar la fase <em>Test</em> de Jenkins para que llame al script de cobertura y publique, en el bloque <code>post</code>, el informe de cobertura generado.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>1.Modifica <code>package.json</code>, añadiendo el nuevo script y la dependencia:</p>
-</div>
-<div class="listingblock">
-<div class="title">package.json: cobertura</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="w">   </span><span class="err">...</span><span class="w">
-   </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">...</span><span class="w">
-      </span><span class="nl">"coverage-jenkins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest --reporters=default --reporters=jest-junit --coverage --coverageReporters=text --coverageReporters=html --coverageDirectory=./coverage/"</span><span class="w">
-   </span><span class="p">}</span><span class="err">,</span><span class="w">
-   </span><span class="err">...</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Podemos probar en local, llamamos a la ejecución del script: <code>npm run coverage-jenkins</code>.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/node-jest-coverage-jenkins-ok.png" alt="node jest coverage jenkins ok">
-</div>
-<div class="title">Fig. 34. Ejecución de cobertura</div>
-</div>
-<div class="paragraph">
-<p>Como resultado, en la carpeta <code>coverage</code> del proyecto se ha generado el informe de cobertura.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/node-mocha-coverage-results.png" alt="node mocha coverage results" width="160">
-</div>
-<div class="title">Fig. 35. Informe de cobertura</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/node-jest-coverage-index.png" alt="node jest coverage index">
-</div>
-<div class="title">Fig. 36. Informe de cobertura en html</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Modifica el pipeline de Jenkins, la fase <code>Test</code>:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-         <span class="n">sh</span> <span class="s1">'npm run coverage-jenkins'</span> <i class="conum" data-value="1"></i><b>(1)</b>
-      <span class="o">}</span>
-      <span class="n">post</span> <span class="o">{</span>
-        <span class="n">success</span> <span class="o">{</span>
-          <span class="n">junit</span> <span class="s1">'**/test*.xml'</span>
-          <span class="n">publishHTML</span> <span class="nl">target:</span> <span class="o">[</span> <i class="conum" data-value="2"></i><b>(2)</b>
-            <span class="n">allowMissing</span>          <span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-            <span class="n">alwaysLinkToLastBuild</span> <span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-            <span class="n">keepAll</span>               <span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
-            <span class="n">reportDir</span>             <span class="o">:</span> <span class="s1">'./coverage/'</span><span class="o">,</span>
-            <span class="n">reportFiles</span>           <span class="o">:</span> <span class="s1">'index.html'</span><span class="o">,</span>
-            <span class="n">reportName</span>            <span class="o">:</span> <span class="s1">'Coverage Report'</span>
-          <span class="o">]</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Llama al nuevo script que calcula la cobertura</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Publica el informe de cobertura</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Instala el HTML Publisher plugin en Jenkins</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>El resultado en Jenkins, debe aparece un enlace nuevo en el menú de la izquierda:</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-node-coverage-report-link.png" alt="jenkins node coverage report link">
-</div>
-<div class="title">Fig. 37. Enlace al informe de cobertura en html</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Para poder visualizar correctamente el <em>Coverage Report</em>, hay que cambiar la <a href="https://wiki.jenkins.io/display/JENKINS/Configuring+Content+Security+Policy#ConfiguringContentSecurityPolicy-TheDefaultRuleSet">configuración de seguridad</a> de Jenkins predeterminada, que es muy restrictiva para prevenir de archivos HTML/JS maliciosos que podrían instalarse como parte de un Plugin. Para modificar la configuración, abre la consola de scritps (<em>Manage Jenkins / Script Console</em>), y ejecuta estas líneas:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">System</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">,</span> <span class="s2">"sandbox; default-src 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; "</span><span class="o">)</span>
-<span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">"hudson.model.DirectoryBrowserSupport.CSP"</span><span class="o">)</span></code></pre>
-</div>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/maven-script-console-site.png" alt="maven script console site">
-</div>
-<div class="title">Fig. 38. Script Console: permisos para visualizar el informe de cobertura</div>
-</div>
-<div class="paragraph">
-<p>Tras ello ya podrás visualizar correctamente el informe de cobertura. Pero ten en cuenta que cada vez que reinicies Jenkins esta configuración  se pierde y vuelve a la configuración predeterminada.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_análisis_estático_de_código">Análisis estático de código</h3>
-<div class="paragraph">
-<p>El código JavaScript es dinámicamente tipado, por lo que en lugar de usar el compilador para realizar el análisis estático de código, como ocurre en lenguajes como Java, las formas más comunes de <a href="https://medium.com/codecademy-engineering/static-analysis-in-javascript-a-technical-introduction-859de5d444a6">análisis estático en JavaScript</a> son <em>formatters</em> y <em>linters</em>.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><em>Formatters</em> o formateadores, escanean y reformatean rápidamente los archivos de código. Uno de los más populares es <a href="https://prettier.io/">Prettier</a>, que como cualquier buen formateador, corregirá automaticamente las inconsistencias que encuentre.</p>
-</li>
-<li>
-<p><em>Linters</em> pueden trabajar en aspectos de formato pero también otros problemas más complejos. Se basan en una serie de reglas para escanear el código, o descripciones de comportamientos a vigilar, y muestran todas las violaciones que encuentran. El más popular para JavaScript es <a href="https://eslint.org/">ESLint</a>.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Vamos a probar <strong>ESLint</strong>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Instala con npm:</p>
-<div class="literalblock">
-<div class="content">
-<pre>npm install eslint eslint-config-prettier eslint-plugin-prettier --save-dev</pre>
-</div>
-</div>
-</li>
-<li>
-<p>A continuación, inicializa un archivo de configuración:</p>
-<div class="literalblock">
-<div class="content">
-<pre>npx eslint --init</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Y responde a las preguntas:</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/eslint-init.png" alt="eslint init">
-</div>
-<div class="title">Fig. 39. ESLint init</div>
-</div>
-<div class="paragraph">
-<p>Se habrá creado un archivo <code>.eslintrc.json</code>, que incluirá esta línea:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="p">{</span><span class="w">
-    </span><span class="nl">"extends"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint:recommended"</span><span class="w"> <i class="conum" data-value="1"></i><b>(1)</b>
-</span><span class="p">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Habilita las <a href="https://eslint.org/docs/rules/">reglas predeterminadas</a></td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>En lugar del anterior fichero, puedes utilizar un fichero <code>.eslintrc.js</code> como el siguiente, que contiene recomendaciones para express:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="javascript"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">env</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">es6</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">node</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">},</span>
-    <span class="na">extends</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">prettier</span><span class="dl">'</span><span class="p">],</span>
-    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">prettier</span><span class="dl">'</span><span class="p">],</span>
-    <span class="na">globals</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">Atomics</span><span class="p">:</span> <span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">SharedArrayBuffer</span><span class="p">:</span> <span class="dl">'</span><span class="s1">readonly</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">parserOptions</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">ecmaVersion</span><span class="p">:</span> <span class="mi">2018</span><span class="p">,</span>
-        <span class="na">sourceType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">module</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">rules</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">'</span><span class="s1">prettier/prettier</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span>
-        <span class="dl">'</span><span class="s1">class-methods-use-this</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">off</span><span class="dl">'</span><span class="p">,</span>
-        <span class="dl">'</span><span class="s1">no-param-reassign</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">off</span><span class="dl">'</span><span class="p">,</span>
-        <span class="na">camelcase</span><span class="p">:</span> <span class="dl">'</span><span class="s1">off</span><span class="dl">'</span><span class="p">,</span>
-        <span class="dl">'</span><span class="s1">no-unused-vars</span><span class="dl">'</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">argsIgnorePattern</span><span class="p">:</span> <span class="dl">'</span><span class="s1">next</span><span class="dl">'</span> <span class="p">}]</span>
-    <span class="p">}</span>
-<span class="p">};</span></code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Añade a <code>package.json</code> un script para <code>lint</code> y la dependencia a ESLint</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="title">package.json: lint y dependencia a ESLint</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="json"><span class="w">   </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">...</span><span class="w">
-      </span><span class="nl">"lint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src/**/*.js -f checkstyle -o coverage/eslint-result.xml"</span><span class="w">
-   </span><span class="p">}</span><span class="err">,</span><span class="w">
-   </span><span class="err">...</span><span class="w">
-   </span><span class="nl">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">...</span><span class="w">
-      </span><span class="nl">"eslint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.10.0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"eslint-config-prettier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^8.5.0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"eslint-plugin-prettier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.0.0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"prettier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.5.1"</span><span class="p">,</span><span class="w">
-   </span><span class="p">}</span><span class="w">
-   </span><span class="err">...</span></code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>Lánzalo en local:</p>
-<div class="literalblock">
-<div class="content">
-<pre>npm run lint -s</pre>
-</div>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>El parámetro <code>-s</code> se utiliza para que no muestre mensajes de error. Habrá generado el archivo <code>coverage/eslint-result.xml</code> en formato similar al informe de <em>CheckStyle</em> para poder importarlo correctamente en Jenkins.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="5">
-<li>
-<p>En Jenkins, añade una nueva fase <code>Analysis</code> en el pipeline, en la que llames a <code>lint</code> y publiques el informe generado por <strong>ESLint</strong> con el formato <em>CheckStyle</em>.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">   <span class="n">stage</span><span class="o">(</span><span class="s1">'Analysis'</span><span class="o">){</span>
-      <span class="n">steps</span><span class="o">{</span>
-          <span class="n">sh</span> <span class="s1">'npm run lint -s'</span>
-      <span class="o">}</span>
-      <span class="n">post</span> <span class="o">{</span>
-         <span class="n">always</span><span class="o">{</span>
-            <span class="c1">// record lint issues found, also, fail the build if there are ANY NEW issues found</span>
-            <span class="n">recordIssues</span> <span class="nl">enabledForFailure:</span> <span class="kc">true</span><span class="o">,</span>
-                <span class="nl">blameDisabled:</span> <span class="kc">true</span><span class="o">,</span>
-                <span class="nl">tools:</span> <span class="o">[</span><span class="n">esLint</span><span class="o">(</span><span class="nl">pattern:</span> <span class="s1">'**/eslint-result.xml'</span><span class="o">)],</span>
-                <span class="nl">qualityGates:</span> <span class="o">[[</span><span class="nl">threshold:</span> <span class="mi">1</span><span class="o">,</span> <span class="nl">type:</span> <span class="s1">'NEW'</span><span class="o">]]</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="6">
-<li>
-<p>El enlace al informe de ESLint no aparece en la página principal del proyecto, en el menú de enlaces, sino que tienes que hacer clic en el número del último build, y en la nueva página ya aparece el enlace:</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/eslint-jenkins-link.png" alt="eslint jenkins link">
-</div>
-<div class="title">Fig. 40. Enlace al informe <em>ESLint</em></div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="7">
-<li>
-<p>No te preocupes si la fase de análisis que acabas de añadir falla (está en rojo). Es así porque cuando ESLint detecta un error, finaliza con error (<code>EXIT 1</code>). Si te fijas en el informe, los 2 errores detectados han sido en el archivo <code>test.js</code> (y pueden ser falsos positivos). Para evitarlo, elimina <code>test/*.js</code> del script <code>lint</code> en <code>package.json</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Tras ello, la nueva ejecución del pipeline se ejecutará correctamente.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/eslint-jenkins-pass-grapth.png" alt="eslint jenkins pass grapth">
-</div>
-<div class="title">Fig. 41. Fase <em>ESLint</em> <em>passed</em></div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_despliegue_en_la_vm">Despliegue en la VM</h3>
-<div class="paragraph">
-<p>Para desplegar la aplicación <em>hello world</em> en la instancia de despliegue vamos a clonar el repositorio y a continuación ejecutaremos en ella la orden de Node para ponerla en marcha.</p>
-</div>
-<div class="paragraph">
-<p>Recuerda que ya he hemos realizado una configuración previa sobre la instancia de despliegue, que constituyen los  <strong>prerrequisitos</strong> para esta sección:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Con anterioridad ya instalamos NodeJS en la instancia de despliegue.</p>
-</li>
-<li>
-<p>También habíamos copiado la clave pública de despliegue para que Jenkins, que tiene la clave privada asociada, pueda hacer <code>ssh</code> y ejecutar comandos sobre ella.</p>
-</li>
-<li>
-<p>Como requisito adicional, para ayudarnos a lanzar <code>npm start</code> desde Jenkins, como un proceso demonio en background, usaremos <a href="https://www.npmjs.com/package/forever"><strong>forever</strong></a>. Debes instalar <code>forever</code> en la  instancia de despliegue:</p>
-<div class="literalblock">
-<div class="content">
-<pre>sudo npm install forever -g</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Una vez revisados los prerrequisitos, añade la fase de despliegue al pipeline en Jenkins:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Copia este nueva fase en tu pipeline, sustituyendo DEPLOY_MACHINE por el nombre DNS de tu instancia, y usa el nombre del repositorio git adecuado:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">  <span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy'</span><span class="o">){</span>
-    <span class="n">steps</span> <span class="o">{</span>
-      <span class="n">sh</span> <span class="s1">'''
-        ssh -i ~/.ssh/id_rsa_deploy ubuntu@DEPLOY_MACHINE "if [ ! -d 'nodeapp' ] ; then
-          git clone https://github.com/ualcnsa/nodeapp.git
-        else
-          cd nodeapp
-          git pull origin master
-        fi" <i class="conum" data-value="1"></i><b>(1)</b>
-        ssh -i ~/.ssh/id_rsa_deploy ubuntu@DEPLOY_MACHINE "if pgrep node; then forever stopall; fi" <i class="conum" data-value="2"></i><b>(2)</b>
-        ssh -i ~/.ssh/id_rsa_deploy ubuntu@DEPLOY_MACHINE "cd nodeapp &amp;&amp; npm install" <i class="conum" data-value="3"></i><b>(3)</b>
-        ssh -i ~/.ssh/id_rsa_deploy ubuntu@DEPLOY_MACHINE "cd nodeapp &amp;&amp; PORT=8080 forever start index.js" <i class="conum" data-value="4"></i><b>(4)</b>
-      '''</span>
-    <span class="o">}</span>
-  <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Clona el repositorio si no existe en la máquina de despliegue, si existe hace un <code>pull</code></td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Detiene la ejecución de <code>forever</code> si existe de un despliegue anterior, usando <code>forever stop</code>.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Instala las dependencias</td>
+<td>Utilizamos una imagen Docker con NodeJS 16 instalado.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Ejecuta la aplicación con <code>forever start</code> en el puerto <code>8080</code>, que ejecuta el proceso en background como demonio.</td>
+<td>Instalamos las dependencias del proyecto NodeJS.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Construimos el proyecto Antora.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Paso extra necesario al utilizar la extensión <a href="https://gitlab.com/antora/antora-lunr-extension#user-content-enable-the-search-interface">@antora/lunr-extension</a></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Comando para construir la documentación Antora a partir del playbook.</td>
 </tr>
 </table>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>Referencias</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://codelabs.developers.google.com/codelabs/cloud-create-a-nodejs-vm/">Running Node.js on a Virtual Machine codelab</a></p>
 </li>
 <li>
-<p><a href="https://medium.com/@mosheezderman/how-to-set-up-ci-cd-pipeline-for-a-node-js-app-with-jenkins-c51581cc783c">How to set up CI/CD Pipeline for a node.js app with Jenkins</a></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_hola_mundo_en_node_js_con_docker"><em>Hola mundo</em> en Node.js con Docker</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Para realizar el despliegue de la app <em>Hola mundo</em> en Node.js como un contenedor, primero tenemos que <a href="https://nodejs.org/fr/docs/guides/nodejs-docker-webapp/">dockerizar</a> la aplicación. Una vez construido el contenedor, habrá que publicar la imagen de contenedor en un registro como Google Container Registry, y por último ejecutar el contenedor en la instancia de despliegue.</p>
-</div>
-<div class="paragraph">
-<p>A continuación se describe cómo crear un contenedor Docker de la aplicación Node.js. Los pasos se realizan en local, y al final configuraremos el pipeline de Jenkins para que se realicen automáticamente.</p>
-</div>
-<div class="sect2">
-<h3 id="_creación_del_dockerfile">Creación del <code>Dockerfile</code></h3>
-<div class="paragraph">
-<p>Para crear el contendedor de Docker que empaquete la aplicación Node.js, vamos a definir el siguiente archivo <code>Dockerfile</code> que debe estar en la carpeta raíz del proyecto:</p>
-</div>
-<div class="listingblock">
-<div class="title">Dockerfile</div>
-<div class="content">
-<pre class="rouge highlight"><code data-lang="docker"><span class="k">FROM</span><span class="s"> node:10-alpine</span>
-
-<span class="c"># Create app directory</span>
-<span class="k">WORKDIR</span><span class="s"> /usr/src/app</span>
-
-<span class="c"># Install app dependencies</span>
-<span class="c"># A wildcard is used to ensure both package.json AND package-lock.json are copied</span>
-<span class="c"># where available (npm@5+)</span>
-<span class="k">COPY</span><span class="s"> package*.json ./</span>
-
-<span class="k">RUN </span>npm <span class="nb">install</span>
-<span class="c"># If you are building your code for production</span>
-<span class="c"># RUN npm ci --only=production</span>
-
-<span class="c"># Bundle app source</span>
-<span class="k">COPY</span><span class="s"> . .</span>
-
-<span class="k">EXPOSE</span><span class="s"> 3000</span>
-<span class="k">CMD</span><span class="s"> [ "npm", "start" ]</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>El Dockerfile es muy sencillo, contiene los <a href="https://nodejs.org/fr/docs/guides/nodejs-docker-webapp/#creating-a-dockerfile">pasos básicos</a> para ejecutar una aplicación en un contenedor.</p>
-</div>
-<div class="paragraph">
-<p>Crea además un archivo <code>.dockerignore</code> en la misma carpeta que tu Dockerfile con el siguiente contenido:</p>
-</div>
+<p>Hacemos <code>commit</code> de los cambios y hacemos <code>push</code> a la rama remota</p>
 <div class="listingblock">
 <div class="content">
-<pre>node_modules/
-.git/
-.gitignore
-npm-debug.log</pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Puedes construir la imagen del contenedor:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker build <span class="nt">-t</span> &lt;your username&gt;/nodeapp .</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Tras ello, ejecuta: <code>docker images</code>. La imagen debe aparecer en la lista de imágenes de Docker en tu equipo:</p>
-</div>
-<div class="paragraph">
-<p>Prueba la ejecución del contenedor en local:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker run <span class="nt">-p</span> 3000:3000 <span class="nt">-d</span> <span class="nt">--name</span> hello-node &lt;your username&gt;/nodeapp</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Comprueba que se ha iniciado la aplicación en <a href="http://localhost:3000" class="bare">http://localhost:3000</a>.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Comprueba que el contenedor está ejecutándose con <code>docker ps</code></p>
-</li>
-<li>
-<p>Detén el contenedor con <code>docker stop &lt;ID&gt;</code></p>
-</li>
-<li>
-<p>Comprueba que ya no está ejecutándose, pero el contenedor sigue existiendo, lo puedes ver con <code>docker ps -a</code></p>
-</li>
-<li>
-<p>Podrías volver a arrancarlo con <code>docker start &lt;ID&gt;</code>, pero en su lugar, elimina el contenedor con <code>docker rm &lt;ID&gt;</code></p>
-</li>
-<li>
-<p>La imagen sigue existiendo, puedes verlo con <code>docker images</code></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_publicación_de_la_imagen_en_el_registro">Publicación de la imagen en el registro</h3>
-<div class="paragraph">
-<p>Una vez creada la imagen con <code>docker build</code> y probada su ejecución con <code>docker run</code>, el siguiente paso será publicar la imagen en un registro de contenedores, mediante <code>docker push</code>. De nuevo vamos a usar Google Cloud <a href="https://cloud.google.com/container-registry?hl=es">Container Registry</a>.</p>
-</div>
-<div class="paragraph">
-<p>Para poder hacer <code>push</code> debemos tener permisos de escritura, y por tanto debemos autenticarnos en el servicio Container Registry. Este proceso ya se hizo en la para el ejemplo de Java en la sección <em>Autenticación en Container Registry</em>. Ahora, simplemente comprueba que mantienes el login del Container Registry.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Comprueba el login al registro:</p>
-<div class="literalblock">
-<div class="content">
-<pre>docker login https://gcr.io</pre>
+<pre class="rouge highlight"><code>git add -A &amp;&amp; git commit
+git push origin main</code></pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Podemos comprobar que todo se ha realizado correctamente, viendo el resultado de la acción.</p>
 </div>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="modules/node-app/images/docker-login-done.png" alt="docker login done">
+<img src="modules/first-steps/images/github-antora-build.png" alt="github antora build">
 </div>
-<div class="title">Fig. 42. Comprobar docker login</div>
 </div>
-<div class="admonitionblock warning">
+</div>
+<div class="sect2">
+<h3 id="_descarga_de_los_artefactos_artifacts">Descarga de los artefactos (artifacts)</h3>
+<div class="paragraph">
+<p>Hemos conseguido configurar un workflow que permite compilar la documentación en Antora cada vez que se hace un pull request, un push a main o de forma manual.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, no tenemos acceso a la página web que se construye.</p>
+</div>
+<div class="paragraph">
+<p>Si queremos asociar la documentación a cada ejecución tenemos que hacer uso de un action que suba artefactos (artifacts).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Vamos al <a href="https://github.com/marketplace?type=actions">GitHub Actions Marketplace</a></p>
+</li>
+<li>
+<p>Buscamos la palabra <code>artifact</code>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact.png" alt="github marketplace artifact">
+</div>
+</div>
+</li>
+<li>
+<p>Seleccionamos <code>Upload a Build Artifact</code> que es un action creado por GitHub.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact-desc.png" alt="github marketplace artifact desc">
+</div>
+</div>
+</li>
+<li>
+<p>Buscamos como utilizar la action en su documentación.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact-doc.png" alt="github marketplace artifact doc">
+</div>
+</div>
+</li>
+<li>
+<p>Modificamos nuestro flujo <code>build.yml`</code> con un paso extra.</p>
+<div class="listingblock">
+<div class="title">build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">...</span>
+      <span class="c1"># Uploads the generated site</span>
+       <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v3</span>
+         <span class="na">with</span><span class="pi">:</span>
+           <span class="na">name</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="1"></i><b>(1)</b>
+           <span class="na">path</span><span class="pi">:</span> <span class="s">docs/</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del fichero zip que descargaremos.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Carpeta con la documentación. Por defecto Antora usa el directorio <code>docs</code></td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Tras hacer un push o una pull request, se ejecutará el workflow y podemos descargar la documentación en el zip del final de la página.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-antora-artifact.png" alt="github antora artifact">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_despliegue_en_github_pages">Despliegue en GitHub Pages</h3>
+<div class="paragraph">
+<p>Es un servicio de GitHub que ermite publicar páginas en HTML estático o en Jekyll.</p>
+</div>
+<div class="paragraph">
+<p>Además proporciona un dominio y url públicas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://organización.github.io" class="bare">https://organización.github.io</a></p>
+</li>
+<li>
+<p><a href="https://organización.github.io/repositorio" class="bare">https://organización.github.io/repositorio</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Podemos desplegar un sitio web mediante un directorio en el repositorio o con una rama especial (gh-pages).</p>
+</div>
+<div class="paragraph">
+<p>Este servicio es usado normalmente para despliegue de frontends o portales de documentación de repositorios, como el caso que nos ocupa.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Vamos a utilizar el action <a href="https://github.com/marketplace/actions/deploy-to-github-pages"><code>Deploy to GitHub Pages</code></a>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-pages.png" alt="github marketplace pages">
+</div>
+</div>
+</li>
+<li>
+<p>Leemos la documentación.</p>
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Si <code>docker login</code> te da error, revisa los pasos de la sección anterior de <em>Autenticación en Container Registry</em>. No es necesario que vuelvas a generar el archivo de credenciales, simplemente copia ese archivo .json en el proyecto actual y úsalo para hacer login.</p>
+<p>Si utilizamos un contenedor tenemos que tener instalado <code>git</code> y <code>rsync</code> para usar esta action.</p>
 </div>
-<div class="paragraph">
-<p>En tal caso, no olvides añadir el archivo de credenciales al <code>.gitignore</code> para evitar publicar en GitHub tus credenciales.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install rsync and git</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">apt-get update &amp;&amp; apt-get install -y rsync git</span>
+    <span class="s"># apk update &amp;&amp; apk add rsync git</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy</span>
+  <span class="na">uses</span><span class="pi">:</span> <span class="s">JamesIves/github-pages-deploy-action@v4.2.5</span></code></pre>
+</div>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Etiqueta el contenedor con el nombre completo incluyendo la referencia a Container registry (gcr.io). Primero definimos una variable de entorno con el nombre de nuestro proyecto GCP, y luego etiquetamos la imagen ya construida con un nuevo nombre completo del registro de contenedores:</p>
 </li>
-</ol>
-</div>
+<li>
+<p>Modificamos los pasos de nuestro flujo <code>build.yml</code> como primer y último paso</p>
 <div class="listingblock">
+<div class="title">build.yml</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="nv">GOOGLE_CLOUD_PROJECT</span><span class="o">=</span>cnsa-2022-user123
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">steps</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install git and rsync 📚</span>
+         <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+           <span class="s">apk update &amp;&amp; apk add git rsync</span>
 
-docker tag  &lt;your username&gt;/nodeapp gcr.io/<span class="nv">$GOOGLE_CLOUD_PROJECT</span>/nodeapp:1.0</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Comprueba que se ha etiquetado correctamente</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/docker-tag-nodeapp.png" alt="docker tag nodeapp">
-</div>
-<div class="title">Fig. 43. Imagen etiquetada</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>A continuación, publica la imagen en el registro con <code>docker push</code></p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker push gcr.io/<span class="nv">$GOOGLE_CLOUD_PROJECT</span>/nodeapp:1.0</code></pre>
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="4">
-<li>
-<p>Comprueba que se ha publicado correctamente.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/container-registry-pushed-nodeapp.png" alt="container registry pushed nodeapp">
-</div>
-<div class="title">Fig. 44. Lista de imágenes en Container Registry</div>
-</div>
-<div class="paragraph">
-<p>La imagen del contenedor <strong>nodeapp</strong> ya está disponible en el registro privado de nuestro proyecto GCP. Utilizando nuestras credenciales podremos hacer <code>docker pull</code> de dicha imagen para descargarla en cualquier máquina con docker, y ejecutarlo con <code>docker run</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">docker run <span class="nt">-p</span> 3000:3000 <span class="nt">-t</span> <span class="nt">--name</span> nodeapp gcr.io/<span class="nv">$GOOGLE_CLOUD_PROJECT</span>/nodeapp:1.0</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_despliegue_en_vm">Despliegue en VM</h3>
-<div class="paragraph">
-<p>Conecta a la instancia de despliegue para ejecutar el contenedor. Antes vamos a comprobar el login al registro. En la máquina de despliegue ya habíamos copiado el archivo de credenciales <code>.json</code> con premisos sobre Container Registry. A continuación se recuerdan los comandos necesarios para ello.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash"><span class="c"># Conectamos a la máquina de despliegue</span>
-ssh ubuntu@DNS_MAQUINA_DEPLOY
-<span class="c"># Autenticamos docker contra Container Registry</span>
-<span class="nb">cat </span>keyfile.json | docker login <span class="nt">-u</span> _json_key <span class="nt">--password-stdin</span> https://gcr.io
-<span class="c"># ejecutamos el contenedor desde gcr.io</span>
-docker run <span class="nt">-p</span> 8080:3000 <span class="nt">-t</span> <span class="nt">--name</span> nodeapp gcr.io/<span class="nv">$GOOGLE_CLOUD_PROJECT</span>/nodeapp:1.0</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Hemos publicado el contenedor en el puerto 8080 ya que es el que está abierto en las reglas del firewall de nuestro proyecto GCP.</p>
-</div>
-<div class="paragraph">
-<p>Es posible que la ejecución del contenedor de un error, porque el puerto 8080 ya esté en uso:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="bash">Error starting userland proxy: listen tcp 0.0.0.0:8080: <span class="nb">bind</span>: address already <span class="k">in </span>use.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para solucionarlo, bien detén el proceso o contenedor java que está corriendo con la aplicación PetClinic del ejemplo anterior. O bien utiliza el puerto 80 que también está abierto.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_integración_y_despliegue_continuos_con_jenkins">Integración y despliegue continuos con Jenkins</h3>
-<div class="paragraph">
-<p>A continuación, vamos a automatizar en Jenkins todo el proceso:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>la construcción de la imagen del contenedor,</p>
-</li>
-<li>
-<p>la publicación de la imagen en el registro, y</p>
-</li>
-<li>
-<p>el despliegue del contenedor.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Los plugins de  Jenkins necesarios ya los tenemos configurados el ejemplo en Java.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Definimos un nuevo proyecto en Jenkins de tipo pipeline, con el nombre <code><code>nodeapp-Docker-abc123</code></code> sustituyendo abc123 por nuestro nombre de usuario. Son necesarios 3 fases (stages) en el pipeline: <em>build image</em>, <em>push image</em>, y <em>deploy container</em>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Comenzamos por la <strong>construcción de la imagen</strong>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy"><span class="n">pipeline</span> <span class="o">{</span>
-  <span class="n">agent</span> <span class="n">any</span>
-  <span class="n">environment</span> <span class="o">{</span>
-    <span class="n">CONTAINER_REGISTRY</span> <span class="o">=</span> <span class="s1">'gcr.io'</span>
-    <span class="n">GOOGLE_CLOUD_PROJECT</span> <span class="o">=</span> <span class="s1">'cnsa-2022'</span>
-    <span class="n">CREDENTIALS_ID</span> <span class="o">=</span> <span class="s1">'cnsa-2022-gcr'</span>
-  <span class="o">}</span>
+<span class="s">...</span>
 
-  <span class="n">tools</span> <span class="o">{</span>
-    <span class="c1">// In Global tools configuration, install Node configured as "nodejs"</span>
-    <span class="n">nodejs</span> <span class="s2">"nodejs"</span>
-  <span class="o">}</span>
-
-  <span class="n">stages</span> <span class="o">{</span>
-
-    <span class="n">stage</span><span class="o">(</span><span class="s2">"Git Checkout"</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="c1">// checkout scm</span>
-        <span class="n">git</span> <span class="s1">'https://github.com/ualcnsa/nodeapp.git'</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="n">stage</span><span class="o">(</span><span class="s1">'Install dependencies'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">sh</span> <span class="s1">'npm install'</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-         <span class="n">sh</span> <span class="s1">'npm run test-jenkins'</span>
-      <span class="o">}</span>
-      <span class="n">post</span> <span class="o">{</span>
-        <span class="n">success</span> <span class="o">{</span>
-          <span class="n">junit</span> <span class="s1">'**/test*.xml'</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="n">stage</span><span class="o">(</span><span class="s2">"Build image"</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">script</span> <span class="o">{</span>
-          <span class="n">dockerImage</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="na">build</span><span class="o">(</span>
-            <span class="s2">"${env.CONTAINER_REGISTRY}/${env.GOOGLE_CLOUD_PROJECT}/nodeapp:${env.BUILD_ID}"</span><span class="o">,</span>
-            <span class="s2">"-f Dockerfile ."</span>
-          <span class="o">)</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Para probar que la imagen del contenedor se ha creado bien, añade la siguiente fase que hace un despliegue "local" en la propia máquina de Jenkins, es decir, ejecuta un contenedor basado en la imagen que acabamos de crear:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s2">"Run image locally"</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span> <span class="o">{</span>
-        <span class="n">sh</span> <span class="s2">"docker stop nodeapp || true &amp;&amp; docker rm  nodeapp || true"</span> <i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="n">sh</span> <span class="s2">"docker run -d -p 8080:3000 -t --name nodeapp ${env.CONTAINER_REGISTRY}/${env.GOOGLE_CLOUD_PROJECT}/nodeapp:${env.BUILD_ID}"</span> <i class="conum" data-value="2"></i><b>(2)</b>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
+      <span class="s">- name</span><span class="pi">:</span> <span class="s">Deploy 🚀</span>
+         <span class="s">uses</span><span class="pi">:</span> <span class="s">JamesIves/github-pages-deploy-action@v4.2.5</span>
+         <span class="s">with</span><span class="pi">:</span>
+           <span class="na">branch</span><span class="pi">:</span> <span class="s">gh-pages</span> <i class="conum" data-value="1"></i><b>(1)</b>
+           <span class="na">folder</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="2"></i><b>(2)</b>
+           <span class="na">clean</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Por si ya se ha ejecutado el pipeline anteriormente, es necesario comprobar si el contenedor <code>nodeapp</code> ya se está ejecutando, y en tal caso pararlo con <code>docker stop</code> y eliminarlo con <code>docker rm</code></td>
+<td>La rama donde vamos a desplegar.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Con <code>docker run</code> ejecuta el contenedor <code>nodeapp</code> a partir de la imagen recién construida. Para que el pipeline pueda finalizar y el contenedor siga ejecutándose, se añade <code>-d</code> que indica modo <em>detached</em> que ejecuta el contenedor en background.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Tras ello, la aplicación debe estar accesible en el puerto 8080 en tu máquina de Jenkins. Para asegurarnos que la aplicación se está ejecutando bien, debemos problarlo "manualmente". Para automatizar esta prueba, lo adecuado sería realizar unos tests end-to-end, con <a href="https://www.selenium.dev">Selenium</a>. Esto se explicará en otra actividad, dedicada al testing.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'End-to-end Test image'</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// Ideally, we would run some end-to-end tests against our running container.</span>
-        <span class="n">steps</span><span class="o">{</span>
-            <span class="n">sh</span> <span class="s1">'echo "End-to-end Tests passed"'</span>
-        <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>El siguiente paso es <strong>publicar la imagen</strong> en el registro.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Primero, las credenciales en Jenkins para poder hacer <code>push</code> en Container Registry ya están creadas del ejemplo anterior (Si tienes algún problema, consulta la sección correspondiente del ejemplo de Java)</p>
-</li>
-</ol>
-</div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Define la fase para publicar la imagen del contenedor:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s2">"Push image"</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">steps</span> <span class="o">{</span>
-            <span class="n">script</span> <span class="o">{</span>
-                <span class="n">docker</span><span class="o">.</span><span class="na">withRegistry</span><span class="o">(</span><span class="s1">'https://'</span><span class="o">+</span> <span class="n">CONTAINER_REGISTRY</span><span class="o">,</span> <span class="s1">'gcr:'</span><span class="o">+</span> <span class="n">GOOGLE_CLOUD_PROJECT</span><span class="o">)</span> <span class="o">{</span>
-                        <span class="n">dockerImage</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s2">"latest"</span><span class="o">)</span>
-                        <span class="n">dockerImage</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="s2">"${env.BUILD_ID}"</span><span class="o">)</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Comprueba que se ha publicado correctamente en el registro.</p>
-</div>
-<div class="imageblock text-center thumb">
-<div class="content">
-<img src="modules/node-app/images/jenkins-published-nodeapp-container-registry.png" alt="jenkins published nodeapp container registry">
-</div>
-<div class="title">Fig. 45. Imagen publicada en Container Registry, etiquetada con el número de build</div>
-</div>
-<div class="paragraph">
-<p>Por último, quedaría el paso de <strong>desplegar al entorno de producción</strong>: la máquina virtual de despliegue.</p>
-</div>
-<div class="paragraph">
-<p>Los pasos para el despliegue de la nueva imagen del contenedor consistirán en ejecutar los siguientes comandos sobre la máquina de despliegue:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>docker stop</code> del contenedor por si estuviera ejecutándose</p>
-</li>
-<li>
-<p><code>docker rm</code> para eliminar el contenedor existente, que puede estar basado en una imagen de una versión anterior</p>
-</li>
-<li>
-<p><code>docker run</code> que primero hará un <code>docker pull</code> de la imagen actualizada del registro. Lo lanzaremos en el puerto 80 ya que el 8080 está ocupado por el despliegue que hicimos sin contenedor.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Estas acciones debemos añadirlas a un <code>stage</code> del pipeline de Jenkins que se encargará de desplegar el nuevo contenedor automáticamente. En el siguiente código, sustituye <code>DNS_DEPLOY_INSTANCE</code> por el nombre DNS de tu instancia de despliegue. También puedes definirla como una variable de entorno al inicio del pipeline.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'Deploy to Production'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span><span class="o">{</span>
-        <span class="n">sh</span> <span class="s1">'''
-          ssh -i ~/.ssh/id_rsa_deploy ubuntu@DNS_DEPLOY_INSTANCE "if docker ps -q --filter name=nodeapp | grep . ; then docker stop nodeapp ; fi" <i class="conum" data-value="1"></i><b>(1)</b>
-          ssh -i ~/.ssh/id_rsa_deploy ubuntu@DNS_DEPLOY_INSTANCE "if docker ps -a -q --filter name=nodeapp | grep . ; then docker rm -fv nodeapp ; fi" <i class="conum" data-value="1"></i><b>(1)</b>
-          ssh -i ~/.ssh/id_rsa_deploy ubuntu@DNS_DEPLOY_INSTANCE "docker run -d -p 8080:3000 -t --name nodeapp ${CONTAINER_REGISTRY}/${GOOGLE_CLOUD_PROJECT}/nodeapp:latest" <i class="conum" data-value="2"></i><b>(2)</b>
-        '''</span>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Ejecuta en la instancia de despliegue el comando que detiene y elimina el contenedor <code>nodeapp</code> en caso de que ya se estuviera ejecutando</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Ejecuta en la instancia de despliegue el comando para ejecutar el contenedor basado en la última versión de la imagen, lanzándolo en background y con <code>-d</code> para que el pipeline finalice y el contenedor permanezca en ejecución.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>La aplicación nodeapp debe estar accesible <em>en producción</em>, en el puerto 8080 en la instancia de despliegue. Para asegurarnos, debemos problarlo "manualmente". Para automatizar esta prueba <em>en producción</em>, lo adecuado de nuevo sería realizar unos tests end-to-end, con <a href="https://www.selenium.dev">Selenium</a>. Esto se explicará en otra actividad, dedicada al testing.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'End-to-end Test on Production'</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// Ideally, we would run some end-to-end tests against our running container.</span>
-        <span class="n">steps</span><span class="o">{</span>
-            <span class="n">sh</span> <span class="s1">'echo "End-to-end Tests passed on Production"'</span>
-        <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Por último, es una buena práctica eliminar las imágenes que se van generando en cada build, para liberar espacio en la máquina de Jenkins. Primero paramos y eliminamos el contenedor local, luego eliminamos la imagen.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="groovy">    <span class="n">stage</span><span class="o">(</span><span class="s1">'Remove Unused docker image'</span><span class="o">)</span> <span class="o">{</span>
-      <span class="n">steps</span><span class="o">{</span>
-        <span class="c1">// input message:"Proceed with removing image locally?" </span><i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="n">sh</span> <span class="s1">'if docker ps -q --filter name=nodeapp | grep . ; then docker stop nodeapp &amp;&amp; docker rm -fv nodeapp; fi'</span> <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="n">sh</span> <span class="s1">'docker rmi ${CONTAINER_REGISTRY}/${GOOGLE_CLOUD_PROJECT}/nodeapp:$BUILD_NUMBER'</span> <i class="conum" data-value="3"></i><b>(3)</b>
-      <span class="o">}</span>
-    <span class="o">}</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Pide confirmación al usuario, que tendrán que pulsar un botón de <em>Proceed</em> para continuar la ejecución del pipeline</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Para y elimina el contenedor <em>local</em></td>
+<td>La carpeta que queremos desplegar.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Elimina la imagen de contenedor en <em>local</em> con <code>docker rmi</code> para liberar espacio.</td>
+<td>Si queremos limpiar la rama para evitar que ficheros no existentes se queden en la rama.</td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>El pipeline completo, con todas sus fases, debe quedar así:</p>
-</div>
+</li>
+<li>
+<p>Hacemos commit y subimos los cambios.</p>
+</li>
+<li>
+<p>Una vez se ha ejecutado la acción, configuramos el soporte para <strong>GitHub Pages</strong>. Entramos en <code>Settings &gt; Pages</code> y seleccionamos la rama <code>gh-pages</code> como origen.</p>
 <div class="imageblock text-center thumb">
 <div class="content">
-<img src="modules/node-app/images/jenkins-nodeapp-full-pipeline.png" alt="jenkins nodeapp full pipeline">
+<img src="modules/first-steps/images/github-pages.png" alt="github pages">
 </div>
-<div class="title">Fig. 46. Pipeline completo</div>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>Referencias</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://nodejs.org/es/docs/guides/nodejs-docker-webapp/">Dockerizing a Node.js web app</a> @ Node.js Docs</p>
 </li>
 <li>
-<p><a href="https://medium.com/@sssanjaya/a-simple-docker-setup-for-simple-hello-world-nodejs-application-bcf79bb608a0">A simple docker setup for hello world nodejs application</a> @ Medium</p>
-</li>
-<li>
-<p><a href="https://semaphoreci.com/community/tutorials/dockerizing-a-node-js-web-application">Dockerizing a Node.js Web Application</a> @ SemaphoreCI</p>
-</li>
-<li>
-<p><a href="https://www.docker.com/blog/keep-nodejs-rockin-in-docker/">Top 4 Tactics To Keep Node.js Rockin’ in Docker</a></p>
+<p>En esta página podemos consultar la <code>url</code> de la documentación desplegada.</p>
 </li>
 </ol>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -3060,7 +1373,7 @@ docker run <span class="nt">-p</span> 8080:3000 <span class="nt">-t</span> <span
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-21 20:59:28 +0100
+Last updated 2022-03-30 19:21:00 +0200
 </div>
 </div>
 </body>

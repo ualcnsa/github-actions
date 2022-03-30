@@ -8,7 +8,7 @@ COLOCA A CONTINUACION LOS OBJETIVOS
 ====
 * Vamos a crear un repositorio vacio donde crear nuestro primer flujo de trabajo con GitHub Actions.
 
-* Después, con el https://ualhmis.github.io/Jenkins2Instalacion/[repositorio con la documentación de la asignatura] crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.
+* Después, con el https://github.com/ualcnsa/cicd[repositorio con la documentación de la asignatura] crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.
 
 ====
 
