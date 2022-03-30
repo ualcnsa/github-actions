@@ -669,6 +669,15 @@ pre.rouge {
 <li><a href="#_comprobando_el_resultado">Comprobando el resultado</a></li>
 </ul>
 </li>
+<li><a href="#_primer_ejemplo_documentación_en_antora">Primer ejemplo: Documentación en Antora</a>
+<ul class="sectlevel2">
+<li><a href="#_introducción_a_antora">Introducción a Antora</a></li>
+<li><a href="#_creación_del_repositorio_2">Creación del repositorio</a></li>
+<li><a href="#_creando_el_workflow_para_antora">Creando el workflow para Antora</a></li>
+<li><a href="#_descarga_de_los_artefactos_artifacts">Descarga de los artefactos (artifacts)</a></li>
+<li><a href="#_despliegue_en_github_pages">Despliegue en GitHub Pages</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -724,7 +733,7 @@ La entrega será mediante el envío de un informe y el acceso al profesor a los 
 <p>Vamos a crear un repositorio vacio donde crear nuestro primer flujo de trabajo con GitHub Actions.</p>
 </li>
 <li>
-<p>Después, con el <a href="https://ualhmis.github.io/Jenkins2Instalacion/">repositorio con la documentación de la asignatura</a> crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.</p>
+<p>Después, con el <a href="https://github.com/ualcnsa/cicd">repositorio con la documentación de la asignatura</a> crearemos los primeros ejemplos de GitHub Actions que nos permitirán crear artefactos y desplegar la documentación en HTML en GitHub Pages.</p>
 </li>
 </ul>
 </div>
@@ -898,7 +907,7 @@ La entrega será mediante el envío de un informe y el acceso al profesor a los 
 <p>Hacemos <code>commit</code> de los cambios y hacemos <code>push</code> a la rama remota</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code>git commit -a
+<pre class="rouge highlight"><code>git add -A &amp;&amp; git commit
 git push origin main</code></pre>
 </div>
 </div>
@@ -969,10 +978,402 @@ git push origin main</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_primer_ejemplo_documentación_en_antora">Primer ejemplo: Documentación en Antora</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introducción_a_antora">Introducción a Antora</h3>
+<div class="paragraph">
+<p>Antora permite gestionar la documentación de un proyecto como si fuera código. Esto significa que el proceso de documentación se beneficia de las mismas prácticas utilizadas para producir software con éxito.</p>
+</div>
+<div class="paragraph">
+<p>Algunas de estas prácticas son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Almacenar el contenido en un sistema de control de versiones.</p>
+</li>
+<li>
+<p>Separar el contenido, la configuración y la presentación.</p>
+</li>
+<li>
+<p>Aprovechar la automatización para la compilación, validación, verificación y publicación.</p>
+</li>
+<li>
+<p>Reutilización de materiales compartidos (DRY).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Antora ayuda a incorporar estas prácticas en el flujo de trabajo de documentación. Como resultado, la documentación es mucho más fácil de gestionar, mantener y mejorar.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creación_del_repositorio_2">Creación del repositorio</h3>
+<div class="paragraph">
+<p>Para empezar a trabajar solo necesitas un repositorio alojado en GitHub de tipo <strong>público</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En este repositorio subiremos el contenido de <a href="https://github.com/ualcnsa/cicd/archive/232cf038086dc798e51d5201bba9945277562851.zip">un proyecto de documentación en Antora</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Descomprimimos el archivo en un directorio</p>
+</li>
+<li>
+<p>Entramos al directorio y hacemos <code>git init</code></p>
+</li>
+<li>
+<p>Creamos la rama principal <code>git checkout -b main</code></p>
+</li>
+<li>
+<p>Hacemos commit de todos los archivos con <code>git add -A &amp;&amp; git commit</code></p>
+</li>
+<li>
+<p>Añadimos el remote de nuestro repositorio <code>git remote add origin &lt;dirección-repositorio&gt;</code></p>
+</li>
+<li>
+<p>Subimos la rama local <code>git push origin main`</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Nuestro repositorio tiene que tener la siguiente estructura:</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-antora-files.png" alt="github antora files">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creando_el_workflow_para_antora">Creando el workflow para Antora</h3>
+<div class="paragraph">
+<p>A continuación, vamos a añadir un workflow que construya nuestro proyecto en Antora.</p>
+</div>
+<div class="paragraph">
+<p>Al tratarse de un proyecto basado en NodeJS, utilizaremos una imagen Docker con éste instalado y seguiremos un proceso de construcción común a éste tipo de proyectos.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para más información sobre la construcción de proyectos Antora <a href="https://docs.antora.org/antora/latest/install-and-run-quickstart/" class="bare">https://docs.antora.org/antora/latest/install-and-run-quickstart/</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crea un directorio <code>.github/workflows</code>.</p>
+</li>
+<li>
+<p>En este directorio, crea un fichero llamado <code>build.yml</code>.</p>
+</li>
+<li>
+<p>Copia el siguiente contenido YAML en el fichero anterior.</p>
+<div class="listingblock">
+<div class="title">build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+
+<span class="na">on</span><span class="pi">:</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">pull_request</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">main</span> <span class="pi">]</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span> <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span>
+    <span class="c1"># The type of runner that the job will run on</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">container</span><span class="pi">:</span> <span class="s">node:16-alpine</span> <i class="conum" data-value="3"></i><b>(3)</b>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span> <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build Antora project</span> <i class="conum" data-value="5"></i><b>(5)</b>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">cp -R node_modules/@antora/lunr-extension/supplemental_ui/* supplemental-ui/ </span><i class="conum" data-value="6"></i><b>(6)</b>
+          <span class="s">npx antora local-antora-playbook.yml --fetch </span><i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Se ejecuta al hacer <strong>push</strong> en la rama <strong>main</strong> o un <strong>pull request</strong> con destino <strong>main</strong>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Podemos lanzar el workflow cuando queramos.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Utilizamos una imagen Docker con NodeJS 16 instalado.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Instalamos las dependencias del proyecto NodeJS.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Construimos el proyecto Antora.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Paso extra necesario al utilizar la extensión <a href="https://gitlab.com/antora/antora-lunr-extension#user-content-enable-the-search-interface">@antora/lunr-extension</a></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Comando para construir la documentación Antora a partir del playbook.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Hacemos <code>commit</code> de los cambios y hacemos <code>push</code> a la rama remota</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>git add -A &amp;&amp; git commit
+git push origin main</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Podemos comprobar que todo se ha realizado correctamente, viendo el resultado de la acción.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-antora-build.png" alt="github antora build">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_descarga_de_los_artefactos_artifacts">Descarga de los artefactos (artifacts)</h3>
+<div class="paragraph">
+<p>Hemos conseguido configurar un workflow que permite compilar la documentación en Antora cada vez que se hace un pull request, un push a main o de forma manual.</p>
+</div>
+<div class="paragraph">
+<p>Sin embargo, no tenemos acceso a la página web que se construye.</p>
+</div>
+<div class="paragraph">
+<p>Si queremos asociar la documentación a cada ejecución tenemos que hacer uso de un action que suba artefactos (artifacts).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Vamos al <a href="https://github.com/marketplace?type=actions">GitHub Actions Marketplace</a></p>
+</li>
+<li>
+<p>Buscamos la palabra <code>artifact</code>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact.png" alt="github marketplace artifact">
+</div>
+</div>
+</li>
+<li>
+<p>Seleccionamos <code>Upload a Build Artifact</code> que es un action creado por GitHub.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact-desc.png" alt="github marketplace artifact desc">
+</div>
+</div>
+</li>
+<li>
+<p>Buscamos como utilizar la action en su documentación.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-artifact-doc.png" alt="github marketplace artifact doc">
+</div>
+</div>
+</li>
+<li>
+<p>Modificamos nuestro flujo <code>build.yml`</code> con un paso extra.</p>
+<div class="listingblock">
+<div class="title">build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">...</span>
+      <span class="c1"># Uploads the generated site</span>
+       <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v3</span>
+         <span class="na">with</span><span class="pi">:</span>
+           <span class="na">name</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="1"></i><b>(1)</b>
+           <span class="na">path</span><span class="pi">:</span> <span class="s">docs/</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del fichero zip que descargaremos.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Carpeta con la documentación. Por defecto Antora usa el directorio <code>docs</code></td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Tras hacer un push o una pull request, se ejecutará el workflow y podemos descargar la documentación en el zip del final de la página.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-antora-artifact.png" alt="github antora artifact">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_despliegue_en_github_pages">Despliegue en GitHub Pages</h3>
+<div class="paragraph">
+<p>Es un servicio de GitHub que ermite publicar páginas en HTML estático o en Jekyll.</p>
+</div>
+<div class="paragraph">
+<p>Además proporciona un dominio y url públicas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://organización.github.io" class="bare">https://organización.github.io</a></p>
+</li>
+<li>
+<p><a href="https://organización.github.io/repositorio" class="bare">https://organización.github.io/repositorio</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Podemos desplegar un sitio web mediante un directorio en el repositorio o con una rama especial (gh-pages).</p>
+</div>
+<div class="paragraph">
+<p>Este servicio es usado normalmente para despliegue de frontends o portales de documentación de repositorios, como el caso que nos ocupa.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Vamos a utilizar el action <a href="https://github.com/marketplace/actions/deploy-to-github-pages"><code>Deploy to GitHub Pages</code></a>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-marketplace-pages.png" alt="github marketplace pages">
+</div>
+</div>
+</li>
+<li>
+<p>Leemos la documentación.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si utilizamos un contenedor tenemos que tener instalado <code>git</code> y <code>rsync</code> para usar esta action.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install rsync and git</span>
+  <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">apt-get update &amp;&amp; apt-get install -y rsync git</span>
+    <span class="s"># apk update &amp;&amp; apk add rsync git</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy</span>
+  <span class="na">uses</span><span class="pi">:</span> <span class="s">JamesIves/github-pages-deploy-action@v4.2.5</span></code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Modificamos los pasos de nuestro flujo <code>build.yml</code> como primer y último paso</p>
+<div class="listingblock">
+<div class="title">build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">    <span class="na">steps</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install git and rsync 📚</span>
+         <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+           <span class="s">apk update &amp;&amp; apk add git rsync</span>
+
+<span class="s">...</span>
+
+      <span class="s">- name</span><span class="err">:</span> <span class="s">Deploy 🚀</span>
+         <span class="s">uses</span><span class="err">:</span> <span class="s">JamesIves/github-pages-deploy-action@v4.2.5</span>
+         <span class="s">with</span><span class="err">:</span>
+           <span class="na">branch</span><span class="pi">:</span> <span class="s">gh-pages</span> <i class="conum" data-value="1"></i><b>(1)</b>
+           <span class="na">folder</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="2"></i><b>(2)</b>
+           <span class="na">clean</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>La rama donde vamos a desplegar.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>La carpeta que queremos desplegar.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Si queremos limpiar la rama para evitar que ficheros no existentes se queden en la rama.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Hacemos commit y subimos los cambios.</p>
+</li>
+<li>
+<p>Una vez se ha ejecutado la acción, configuramos el soporte para <strong>GitHub Pages</strong>. Entramos en <code>Settings &gt; Pages</code> y seleccionamos la rama <code>gh-pages</code> como origen.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/first-steps/images/github-pages.png" alt="github pages">
+</div>
+</div>
+</li>
+<li>
+<p>En esta página podemos consultar la <code>url</code> de la documentación desplegada.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-23 18:14:05 UTC
+Last updated 2022-03-30 17:23:46 UTC
 </div>
 </div>
 </body>
