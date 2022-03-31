@@ -1,4 +1,4 @@
-= Aplicación en Node.js
+= Aplicación en NodeJS
 
 ////
 COLOCA A CONTINUACION LOS OBJETIVOS
@@ -7,11 +7,10 @@ COLOCA A CONTINUACION LOS OBJETIVOS
 
 .Objetivos
 ====
-Como construir y desplegar apliaciones web Node.js con Jenkins
+Como construir y desplegar apliaciones web NodeJS con GitHub Actions
 
-. Dockerizar la aplicacion Node.js para facilitar su despliegue
-. Desplegar la aplicación Node.js tanto de forma nativa como mediante contenedor
-. Definir un pipeline para automatizar las etapas más habituales en CI/CD
+. Definir un flujo de trabajo para automatizar las etapas más habituales en CI/CD
+. Desplegar la aplicación NodeJS tanto de forma nativa como mediante contenedor
 
 ====
 
