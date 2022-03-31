@@ -680,6 +680,19 @@ pre.rouge {
 </li>
 </ul>
 </li>
+<li><a href="#_aplicación_en_nodejs">Aplicación en NodeJS</a>
+<ul class="sectlevel1">
+<li><a href="#_hola_mundo_en_nodejs"><em>Hola mundo</em> en NodeJS</a>
+<ul class="sectlevel2">
+<li><a href="#_creación_del_repositorio_3">Creación del repositorio</a></li>
+<li><a href="#_creación_del_workflow_en_github_actions">Creación del workflow en GitHub Actions</a></li>
+<li><a href="#_informe_de_cobertura">Informe de cobertura</a></li>
+<li><a href="#_análisis_estático_de_código">Análisis estático de código</a></li>
+<li><a href="#_despliegue_en_la_vm">Despliegue en la VM</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1328,24 +1341,29 @@ git push origin main</code></pre>
 
       <span class="s">- name</span><span class="pi">:</span> <span class="s">Deploy 🚀</span>
          <span class="s">uses</span><span class="pi">:</span> <span class="s">JamesIves/github-pages-deploy-action@v4.2.5</span>
+         <span class="s">if</span><span class="pi">:</span> <span class="s">contains(github.ref,'refs/heads/main')</span> <i class="conum" data-value="1"></i><b>(1)</b>
          <span class="s">with</span><span class="pi">:</span>
-           <span class="na">branch</span><span class="pi">:</span> <span class="s">gh-pages</span> <i class="conum" data-value="1"></i><b>(1)</b>
-           <span class="na">folder</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="2"></i><b>(2)</b>
-           <span class="na">clean</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+           <span class="na">branch</span><span class="pi">:</span> <span class="s">gh-pages</span> <i class="conum" data-value="2"></i><b>(2)</b>
+           <span class="na">folder</span><span class="pi">:</span> <span class="s">docs</span> <i class="conum" data-value="3"></i><b>(3)</b>
+           <span class="na">clean</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>La rama donde vamos a desplegar.</td>
+<td>Solo se ejecuta si hacemos push a la rama main. Evitamos modificar la rama <code>gh-pages</code> al construir una pull request.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>La carpeta que queremos desplegar.</td>
+<td>La rama donde vamos a desplegar.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>La carpeta que queremos desplegar.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>Si queremos limpiar la rama para evitar que ficheros no existentes se queden en la rama.</td>
 </tr>
 </table>
@@ -1367,13 +1385,619 @@ git push origin main</code></pre>
 </li>
 </ol>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>EJERCICIOS (Optativos)</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Añade un nuevo paso que permita crear un release a partir de la creación de un tag. Puedes basarte en el siguiente <a href="https://github.com/frangarcj/ff3_vita/blob/master/.github/workflows/compilation.yml#L38">ejemplo</a>.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_aplicación_en_nodejs" class="sect0">Aplicación en NodeJS</h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="exampleblock">
+<div class="title">Objetivos</div>
+<div class="content">
+<div class="paragraph">
+<p>Como construir y desplegar apliaciones web NodeJS con GitHub Actions</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Definir un flujo de trabajo para automatizar las etapas más habituales en CI/CD</p>
+</li>
+<li>
+<p>Desplegar la aplicación NodeJS tanto de forma nativa como mediante contenedor</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hola_mundo_en_nodejs"><em>Hola mundo</em> en NodeJS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A continuación se muestra un ejemplo de <strong>integración y despliegue continuos en GitHub Actions de un proyecto NodeJS</strong>. Los pasos a realizar son similares a los ejemplos anterior con Jenkins pero adaptaremos las ordenes o comandos a la forma de trabajar de GitHub Actions.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>La implementación de la integración y despliegue continuo permitirá que, para cada pull request en el repositorio, GitHub Actions instale las dependencias y ejecute los tests. Si los tests pasan correctamente, GitHub Actions desplegará la aplicación en el servidor de despliegue. Y si fallan, se notificará al desarrollador.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creación_del_repositorio_3">Creación del repositorio</h3>
+<div class="paragraph">
+<p>Para empezar a trabajar solo necesitas un repositorio alojado en GitHub de tipo <strong>público</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En este repositorio subiremos el contenido de <a href="https://github.com/ualcnsa/nodeapp/archive/b96d862ac1b7e2c159c29c2a8552355b01f5cc17.zip">un proyecto HelloWorld en NodeJS</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Descomprimimos el archivo en un directorio</p>
+</li>
+<li>
+<p>Entramos al directorio y hacemos <code>git init</code></p>
+</li>
+<li>
+<p>Creamos la rama principal <code>git checkout -b main</code></p>
+</li>
+<li>
+<p>Hacemos commit de todos los archivos con <code>git add -A &amp;&amp; git commit</code></p>
+</li>
+<li>
+<p>Añadimos el remote de nuestro repositorio <code>git remote add origin &lt;dirección-repositorio&gt;</code></p>
+</li>
+<li>
+<p>Subimos la rama local <code>git push origin main`</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Nuestro repositorio tiene que tener la siguiente estructura:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comprueba que los archivos <code>main.js</code>, <code>app.js</code> y  <code>app.test.js</code>, así como la carpeta <code>services</code>, estén dentro de una carpeta <code>src</code>. Si no es así, crea la carpeta <code>src</code> y muevelos dentro.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/node-files-initial-point.png" alt="node files initial point">
+</div>
+<div class="title">Fig. 1. Archivos y carpetas en el estado inicial</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creación_del_workflow_en_github_actions">Creación del workflow en GitHub Actions</h3>
+<div class="paragraph">
+<p>Creamos un nuevo workflow <code>.github/workflows/build.yml</code></p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"> <span class="na">name</span><span class="pi">:</span> <span class="s">CI</span>
+
+ <span class="na">on</span><span class="pi">:</span>
+   <span class="na">push</span><span class="pi">:</span>
+     <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="na">pull_request</span><span class="pi">:</span>
+     <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+   <span class="na">workflow_dispatch</span><span class="pi">:</span>
+
+ <span class="na">jobs</span><span class="pi">:</span>
+   <span class="na">build</span><span class="pi">:</span>
+     <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+     <span class="na">container</span><span class="pi">:</span> <span class="s">node:16-alpine</span>
+
+     <span class="na">steps</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+
+       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+         <span class="na">run</span><span class="pi">:</span> <span class="s">npm install</span>
+
+       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Test</span>
+         <span class="na">run</span><span class="pi">:</span> <span class="s">npm run test-jenkins</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>El nombre de la rama <code>master</code> o <code>main</code> depende de cual es la rama principal.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Ejecuta los tests de igual forma a como los definimos para Jenkins.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>El resultado sera:</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-nodejs-test.png" alt="github action nodejs test">
+</div>
+<div class="title">Fig. 2. Nodeapp action</div>
+</div>
+<div class="paragraph">
+<p>Sin embargo nos interesaría verlo de una forma más visual e integrado en el entorno de GitHub utilizando el action <a href="https://github.com/dorny/test-reporter">Test Reporter</a>. Esta acción permite anotar las pull requests con un test en formato junit.</p>
+</div>
+<div class="paragraph">
+<p>Editamos <code>.github/workflows/build.yml</code> y añadimos la acción para subir un artefacto con los resultados de los tests.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">...</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v2</span>
+         <span class="s">if</span><span class="pi">:</span> <span class="s">success() || failure()</span> <i class="conum" data-value="1"></i><b>(1)</b>
+         <span class="s">with</span><span class="pi">:</span>
+           <span class="na">name</span><span class="pi">:</span> <span class="s">test-results</span> <i class="conum" data-value="2"></i><b>(2)</b>
+           <span class="na">path</span><span class="pi">:</span> <span class="s">./coverage/test.results.xml</span> <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ejecutamos el paso independiente de los fallos.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Nombre del artefacto.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Ruta del resultado de los tests.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Además añadimos otro flujo que anote la pull request llamado <code>.github/workflows/tests.yml</code></p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/tests.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Test</span><span class="nv"> </span><span class="s">Report'</span>
+ <span class="na">on</span><span class="pi">:</span>
+   <span class="na">workflow_run</span><span class="pi">:</span>
+     <span class="na">workflows</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">CI'</span><span class="pi">]</span> <i class="conum" data-value="1"></i><b>(1)</b>
+     <span class="na">types</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="s">completed</span>
+ <span class="na">jobs</span><span class="pi">:</span>
+   <span class="na">report</span><span class="pi">:</span>
+     <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span> <i class="conum" data-value="2"></i><b>(2)</b>
+     <span class="na">steps</span><span class="pi">:</span>
+     <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">dorny/test-reporter@v1</span>
+       <span class="na">with</span><span class="pi">:</span>
+         <span class="na">artifact</span><span class="pi">:</span> <span class="s">test-results</span>              <i class="conum" data-value="3"></i><b>(3)</b>
+         <span class="na">name</span><span class="pi">:</span> <span class="s">JEST Tests</span>                    <i class="conum" data-value="4"></i><b>(4)</b>
+         <span class="na">path</span><span class="pi">:</span> <span class="s1">'</span><span class="s">test.results.xml'</span>            <i class="conum" data-value="5"></i><b>(5)</b>
+         <span class="na">reporter</span><span class="pi">:</span> <span class="s">jest-junit</span>                <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Se ejecuta cuando se completa el flujo llamado <code>CI</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>No hace falta contenedor.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Nombre del artefacto con los tests.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Nombre del check.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Nombre de los resultados dentro del zip.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Formato de los resultados.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Subimos los cambios y podemos comprobar el resultado en los <code>Checks</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-check-jest.png" alt="github action check jest">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_informe_de_cobertura">Informe de cobertura</h3>
+<div class="paragraph">
+<p>Como ya sabemos, la cobertura de código nos va a ofrecer un valor directamente relacionado con la calidad de los juegos de prueba. Para obtener la cobertura y publicarla en GitHub Actions, debemos hacer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar un action que se encarge de la publicación de la cobertura como <a href="https://github.com/mattallty/jest-github-action">Jest Github Action</a>.</p>
+</li>
+<li>
+<p>Modificar el paso <em>Test</em> del flujo de GitHub Actions para que llame al script de cobertura y publique el informe de cobertura generado.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modifica <code>.github/workflows/build.yml</code>, cambiando el paso <code>Test</code> por la ejecución del action.</p>
+</li>
+<li>
+<p>Además pública todos los tests como artifact.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">   <span class="s">...</span>
+      <span class="s">- name</span><span class="pi">:</span> <span class="s">Test</span>
+        <span class="s">uses</span><span class="pi">:</span> <span class="s">mattallty/jest-github-action@v1</span>
+        <span class="s">env</span><span class="pi">:</span>
+          <span class="na">GITHUB_TOKEN</span><span class="pi">:</span> <span class="s">${{ secrets.GITHUB_TOKEN }}</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">test-command</span><span class="pi">:</span> <span class="s2">"</span><span class="s">npm</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">coverage-jenkins"</span> <i class="conum" data-value="1"></i><b>(1)</b>
+   <span class="s">...</span>
+      <span class="s">- uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v2</span>
+        <span class="s">if</span><span class="pi">:</span> <span class="s">success() || failure()</span>
+        <span class="s">with</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">test-results</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="s">./coverage/test.results.xml</span>
+          <span class="na">path</span><span class="pi">:</span> <span class="pi">|</span>
+            <span class="s">./coverage/ </span><i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Genera los tests de cobertura.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Subimos la carpeta completa.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Podemos probar realizando un pull request de prueba.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-coberture.png" alt="github action coberture">
+</div>
+<div class="title">Fig. 3. Ejecución de cobertura</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_análisis_estático_de_código">Análisis estático de código</h3>
+<div class="paragraph">
+<p>El código JavaScript es dinámicamente tipado, por lo que en lugar de usar el compilador para realizar el análisis estático de código, como ocurre en lenguajes como Java, las formas más comunes de <a href="https://medium.com/codecademy-engineering/static-analysis-in-javascript-a-technical-introduction-859de5d444a6">análisis estático en JavaScript</a> son <em>formatters</em> y <em>linters</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Formatters</em> o formateadores, escanean y reformatean rápidamente los archivos de código. Uno de los más populares es <a href="https://prettier.io/">Prettier</a>, que como cualquier buen formateador, corregirá automaticamente las inconsistencias que encuentre.</p>
+</li>
+<li>
+<p><em>Linters</em> pueden trabajar en aspectos de formato pero también otros problemas más complejos. Se basan en una serie de reglas para escanear el código, o descripciones de comportamientos a vigilar, y muestran todas las violaciones que encuentran. El más popular para JavaScript es <a href="https://eslint.org/">ESLint</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vamos a probar <strong>ESLint con Prettier</strong> en GitHub Actions con la action <a href="https://github.com/ataylorme/eslint-annotate-action">ESLint Annotate from Report JSON</a>. Para utilizarla, vamos a añadir al <code>package.json</code> un script para <code>lint</code> en formato json</p>
+</div>
+<div class="listingblock">
+<div class="title">package.json: lint y dependencia a ESLint</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="json"><span class="w">   </span><span class="err">...</span><span class="w">
+   </span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+      </span><span class="nl">"lint:json"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eslint src/**/*.js --format json -o coverage/eslint-result.json"</span><span class="w">
+   </span><span class="p">}</span><span class="err">,</span><span class="w">
+   </span><span class="err">...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En nuestro flujo <code>.github/workflows/build.yml</code>, añade dos nuevos pasos: uno en el que llames a <code>lint:json</code> y otro que ejecute la action para anotar el código.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">...</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Save Code Linting Report JSON</span>
+         <span class="s">run</span><span class="pi">:</span> <span class="s">npm run lint:json</span>
+         <span class="s">continue-on-error</span><span class="pi">:</span> <span class="no">true</span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+       <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Annotate Code Linting Results</span>
+         <span class="na">uses</span><span class="pi">:</span> <span class="s">ataylorme/eslint-annotate-action@1.2.0</span>
+         <span class="na">with</span><span class="pi">:</span>
+           <span class="na">repo-token</span><span class="pi">:</span> <span class="s2">"</span><span class="s">${{</span><span class="nv"> </span><span class="s">secrets.GITHUB_TOKEN</span><span class="nv"> </span><span class="s">}}"</span> <i class="conum" data-value="2"></i><b>(2)</b>
+           <span class="na">report-json</span><span class="pi">:</span> <span class="s2">"</span><span class="s">./coverage/eslint-result.json"</span> <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="nn">...</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Continua ejecutando el flujo aunque se produzca un error.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Esta action necesita un token para poder anotar el código. Esta disponible sin realizar más acciones.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Ruta del informe de ESLint.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Podemos probar realizando un pull request de prueba y viendo el resultado en la pestaña <code>Files Changed</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-eslint-result.png" alt="github action eslint result">
+</div>
+<div class="title">Fig. 4. Ejecución de ESLint</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_despliegue_en_la_vm">Despliegue en la VM</h3>
+<div class="paragraph">
+<p>Para desplegar la aplicación <em>hello world</em> en la instancia de despliegue vamos a clonar el repositorio y a continuación ejecutaremos en ella la orden de Node para ponerla en marcha.</p>
+</div>
+<div class="paragraph">
+<p>Recuerda que ya he hemos realizado una configuración previa sobre la instancia de despliegue, que constituyen los  <strong>prerrequisitos</strong> para esta sección:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Con anterioridad ya instalamos NodeJS en la instancia de despliegue.</p>
+</li>
+<li>
+<p>Tenemos creado un par de claves y hemos copiado la clave pública de despliegue al <code>authorized_keys</code> para que GitHub pueda ejecutar comandos sobre ella usando la clave privada.</p>
+</li>
+<li>
+<p>Como requisito adicional, para ayudarnos a lanzar <code>npm start</code> desde GitHub Actions, como un proceso demonio en background, usaremos <a href="https://www.npmjs.com/package/forever"><strong>forever</strong></a>. Debes instalar <code>forever</code> en la  instancia de despliegue:</p>
+<div class="literalblock">
+<div class="content">
+<pre>sudo npm install forever -g</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Una vez revisados los prerrequisitos, vamos a configurar nuestro repositorio de GitHub para que pueda realizar el despliegue.</p>
+</div>
+<div class="sect3">
+<h4 id="_añadir_la_clave_privada_a_los_secretos_del_repositorio">Añadir la clave privada a los secretos del repositorio.</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ve a tu repositorio en Github y entra en <code>Settings &gt; Secrets</code>.</p>
+</li>
+<li>
+<p>Crea un nuevo secreto con <code>New Repository Secret</code>. Este secreto contiene dos cosas: un nombre y el valor. El nombre se utiliza para obtener el valor más tarde en un flujo de trabajo de Github Actions.</p>
+</li>
+<li>
+<p>Introduce como nombre <code>SSH_PRIVATE_KEY</code>.</p>
+</li>
+<li>
+<p>Copia y pega el contenido de la clave privada como el valor.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-new-secret.png" alt="github action new secret">
+</div>
+<div class="title">Fig. 5. Nuevo secreto</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_añadir_la_clave_privada_al_flujo_de_trabajo_de_github_actions">Añadir la clave privada al flujo de trabajo de Github Actions</h4>
+<div class="paragraph">
+<p>Ahora tenemos que añadir la clave privada a la máquina o contenedor de nuestro flujo de trabajo. Para simplificar el proceso podemos usar una action como <a href="https://github.com/marketplace/actions/install-ssh-key">Install SSH Key</a>. Además, vamos a realizar el despliegue en un flujo nuevo <code>.github/workflows/deploy.yml</code> que solo se ejecute al hacer push sobre la rama principal.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s">Deploy</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">deploy</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install SSH Key</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">shimataro/ssh-key-action@v2</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">key</span><span class="pi">:</span> <span class="s">${{ secrets.SSH_PRIVATE_KEY }}</span> <i class="conum" data-value="1"></i><b>(1)</b>
+          <span class="na">known_hosts</span><span class="pi">:</span> <span class="s1">'</span><span class="s">un-valor-para-que-no-de-error'</span> <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del secreto con la clave privada.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Valor del known_hosts de la máquina a la que nos conectamos. Metemos un valor de ejemplo para calcularlo dinámicamente en pasos posteriores.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_añadir_un_valor_correcto_de_known_hosts">Añadir un valor correcto de known_hosts</h4>
+<div class="paragraph">
+<p>Vamos a guardar como secreto la IP o nombre de dominio de la máquina de despliegue con el nombre de <code>SSH_HOST</code>. Con este valor, vamos a añadir un paso que obtenga el <code>known_hosts</code> y lo escriba.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="nn">...</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Adding Known Hosts</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="s">ssh-keyscan -H ${{ secrets.SSH_HOST }} &gt;&gt; ~/.ssh/known_hosts</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_añadir_el_código_de_despliegue">Añadir el código de despliegue</h4>
+<div class="paragraph">
+<p>De forma similar a como lo haciamos con Jenkins, vamos a añadir un último paso que realize el despliegue mediante ssh.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml">      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Deploy</span>
+         <span class="s">run</span><span class="pi">:</span> <span class="pi">|</span>
+           <span class="s">ssh ubuntu@${{ secrets.SSH_HOST }} "if [ ! -d 'nodeapp' ]; then \</span>
+               <span class="s">git clone https://github.com/ualcnsa/nodeapp.git; \ </span><i class="conum" data-value="1"></i><b>(1)</b>
+             <span class="s">else \</span>
+               <span class="s">cd nodeapp &amp;&amp; git stash &amp;&amp; git fetch --all &amp;&amp; git reset --hard origin/master &amp;&amp; git pull origin master; \</span>
+             <span class="s">fi"</span>
+           <span class="s">ssh ubuntu@${{ secrets.SSH_HOST }} "if pgrep node; then forever stopall; fi"</span>
+           <span class="s">ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp &amp;&amp; npm install"</span>
+           <span class="s">ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp &amp;&amp; forever start src/main.js"</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del repositorio a desplegar.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Podemos acceder a la aplicación mediante el puerto 3000. Si no se puede acceder, habrá que abrirlo en la consola de Google Cloud.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="modules/node-app/images/github-action-deploy-result.png" alt="github action deploy result">
+</div>
+<div class="title">Fig. 6. Resultado del despliegue</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>EJERCICIOS (Optativos)</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crea un nuevo flujo de despliegue, similar al creado en Jenkins, que utilize Docker. Puedes hacerlo de forma manual (mediante script) o busca actions que te ayuden a publicarlo en el registro de Google Cloud.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Referencias</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://zellwk.com/blog/github-actions-deploy/">Deploying to a server via SSH and Rsync in a Github Action</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-30 19:21:00 +0200
+Last updated 2022-03-30 19:34:34 +0200
 </div>
 </div>
 </body>

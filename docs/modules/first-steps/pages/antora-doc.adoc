@@ -186,15 +186,17 @@ Si utilizamos un contenedor tenemos que tener instalado `git` y `rsync` para usa
 
       - name: Deploy 🚀
          uses: JamesIves/github-pages-deploy-action@v4.2.5
+         if: contains(github.ref,'refs/heads/main') <1>
          with:
-           branch: gh-pages <1>
-           folder: docs <2>
-           clean: true <3>
+           branch: gh-pages <2>
+           folder: docs <3>
+           clean: true <4>
 
 ----
-<1> La rama donde vamos a desplegar.
-<2> La carpeta que queremos desplegar.
-<3> Si queremos limpiar la rama para evitar que ficheros no existentes se queden en la rama.
+<1> Solo se ejecuta si hacemos push a la rama main. Evitamos modificar la rama `gh-pages` al construir una pull request.
+<2> La rama donde vamos a desplegar.
+<3> La carpeta que queremos desplegar.
+<4> Si queremos limpiar la rama para evitar que ficheros no existentes se queden en la rama.
 
 4. Hacemos commit y subimos los cambios.
 5. Una vez se ha ejecutado la acción, configuramos el soporte para *GitHub Pages*. Entramos en `Settings > Pages` y seleccionamos la rama `gh-pages` como origen.
@@ -202,3 +204,11 @@ Si utilizamos un contenedor tenemos que tener instalado `git` y `rsync` para usa
 image::github-pages.png[role="thumb", align="center"]
 
 6. En esta página podemos consultar la `url` de la documentación desplegada.
+
+[IMPORTANT]
+====
+*EJERCICIOS (Optativos)* 
+
+. Añade un nuevo paso que permita crear un release a partir de la creación de un tag. Puedes basarte en el siguiente https://github.com/frangarcj/ff3_vita/blob/master/.github/workflows/compilation.yml#L38[ejemplo].
+
+====
