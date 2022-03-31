@@ -4,7 +4,7 @@ Nombre y título del trabajo
 = Despliegue continuo con GitHub Actions
 :navtitle: Introducción
 
-Computación en la Nube, Servicios y Aplicaciones. Joaquín Cañadas <jjcanada@ual.es>, Francisco García <paco.garcia@ual.es>
+Computación en la Nube, Servicios y Aplicaciones. Francisco García <paco.garcia@ual.es>, Joaquín Cañadas <jjcanada@ual.es>
 
 _Version_ *{page-component-display-version}*
 
@@ -20,7 +20,7 @@ COLOCA A CONTINUACION LOS OBJETIVOS
 
 .Realización y entrega
 ****
-La realización de estas actividades se realizará de forma **individual**. Serán la base para actividades posteriores que ser harán en equipo. 
+La realización de estas actividades se realizará de forma **individual**. 
 La entrega será mediante el envío de un informe y el acceso al profesor a los servicios configurados por cada estudiante, para la revisión y evaluación de los mismos. 
 ****
 
