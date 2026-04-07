@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hola mundo en Spring Boot :: Despliegue continuo con GitHub Actions</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Despliegue continuo con GitHub Actions</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="github-actions" data-version="0.23">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Introducción</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../first-steps/index.html">Primeros pasos con GitHub Actions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/first-project.html">Comenzando con GitHub Actions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../node-app/index.html">Aplicación en NodeJS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../node-app/node-hello.html"><em>Hola mundo</em> en NodeJS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Aplicación en Spring Boot</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../ionic-app/index.html">Aplicación Ionic (Angular)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ionic-app/ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Despliegue continuo con GitHub Actions</span>
+    <span class="version">0.23-beta.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">0.23-beta.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Despliegue continuo con GitHub Actions</a></li>
+    <li><a href="index.html">Aplicación en Spring Boot</a></li>
+    <li><a href="spring-hello.html"><em>Hola mundo</em> en Spring Boot</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/master/docs/modules/spring-boot-app/pages/spring-hello.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page"><em>Hola mundo</em> en Spring Boot</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A continuación se muestra un ejemplo de <strong>integración y despliegue continuos en GitHub Actions de un proyecto Spring Boot</strong>. Los pasos a realizar son similares a los ejemplos anteriores, pero adaptaremos las órdenes o comandos a la forma de trabajar de Java con Maven y GitHub Actions.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>La implementación de la integración y despliegue continuo permitirá que, para cada pull request en el repositorio, GitHub Actions compile el proyecto, instale las dependencias y ejecute los tests. Si los tests pasan correctamente, GitHub Actions desplegará la aplicación en el servidor de despliegue. Y si fallan, se notificará al desarrollador.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_repositorio"><a class="anchor" href="#_creación_del_repositorio"></a>Creación del repositorio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para empezar a trabajar solo necesitas un repositorio alojado en GitHub de tipo <strong>público</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En este repositorio subiremos el contenido de un proyecto HelloWorld en Spring Boot generado mediante el creador oficial de proyectos <strong><a href="https://start.spring.io/">Spring Initializr</a></strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Generamos el proyecto con Spring Boot 3.x, Java 21 y Maven.</p>
+</li>
+<li>
+<p>Descomprimimos el archivo en un directorio.</p>
+</li>
+<li>
+<p>Entramos al directorio y hacemos <code>git init</code>.</p>
+</li>
+<li>
+<p>Creamos la rama principal <code>git checkout -b main</code>.</p>
+</li>
+<li>
+<p>Hacemos commit de todos los archivos con <code>git add -A &amp;&amp; git commit</code>.</p>
+</li>
+<li>
+<p>Añadimos el remote de nuestro repositorio <code>git remote add origin &lt;dirección-repositorio&gt;</code>.</p>
+</li>
+<li>
+<p>Subimos la rama local <code>git push origin main</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Nuestro repositorio tiene que tener la estructura estándar de un proyecto Maven:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comprueba que el archivo <code>pom.xml</code> esté en la raíz del repositorio y que el código fuente esté en <code>src/main/java</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/spring-boot-files-initial-point.png" alt="spring boot files initial point">
+</div>
+<div class="title">Figure 1. Archivos y carpetas en el estado inicial</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_workflow_en_github_actions"><a class="anchor" href="#_creación_del_workflow_en_github_actions"></a>Creación del workflow en GitHub Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creamos un nuevo workflow <code>.github/workflows/build.yml</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: CI
+
+on:
+  push:
+    branches: [ main ] <i class="conum" data-value="1"></i><b>(1)</b>
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write <i class="conum" data-value="2"></i><b>(2)</b>
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven <i class="conum" data-value="3"></i><b>(3)</b>
+
+      - name: Build and Test with Maven
+        run: ./mvnw clean verify <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>El nombre de la rama <code>main</code> o <code>master</code> depende de cuál es la rama principal.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Estos permisos son obligatorios para que los reporters anoten los resultados en el código.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>El uso de <code>cache: maven</code> acelera significativamente las ejecuciones posteriores.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Compila, ejecuta tests y genera el paquete JAR.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Sin embargo, nos interesaría ver los resultados de los tests de una forma más visual e integrada en el entorno de GitHub utilizando el action <a href="https://github.com/dorny/test-reporter">Test Reporter</a>.</p>
+</div>
+<div class="paragraph">
+<p>Editamos <code>.github/workflows/build.yml</code> y añadimos la acción para subir un artefacto con los resultados de los tests (en formato JUnit XML producido por Maven Surefire).</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: success() || failure() <i class="conum" data-value="1"></i><b>(1)</b>
+        with:
+          name: test-results
+          path: target/surefire-reports/*.xml <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ejecutamos el paso independientemente de si los tests fallan.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Ruta donde Maven guarda los reportes JUnit.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Además añadimos otro flujo que anote la pull request llamado <code>.github/workflows/tests.yml</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/tests.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: 'Test Report'
+on:
+  workflow_run:
+    workflows: ['CI']
+    types:
+      - completed
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: JUnit Tests
+          path: '*.xml'
+          reporter: java-junit</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_informe_de_cobertura"><a class="anchor" href="#_informe_de_cobertura"></a>Informe de cobertura</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para obtener la cobertura de código en Spring Boot (usualmente con JaCoCo) y publicarla en GitHub Actions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Asegúrate de que el plugin <code>jacoco-maven-plugin</code> esté configurado en tu <code>pom.xml</code>.</p>
+</li>
+<li>
+<p>Utiliza un action como <a href="https://github.com/madrapps/jacoco-report">JaCoCo Report</a> para publicar los resultados.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Modifica <code>.github/workflows/build.yml</code> añadiendo el paso de reporte de cobertura:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.7.1
+        if: github.event_name == 'pull_request'
+        with:
+          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 80
+          min-coverage-changed-files: 80
+...</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_análisis_estático_de_código"><a class="anchor" href="#_análisis_estático_de_código"></a>Análisis estático de código</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para Java, una de las herramientas más comunes de análisis estático es <strong>Checkstyle</strong>. Podemos integrarlo fácilmente para que anote las pull requests.</p>
+</div>
+<div class="paragraph">
+<p>Añade el plugin de Checkstyle a tu <code>pom.xml</code> y configura el siguiente paso en <code>.github/workflows/build.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Run Checkstyle
+        uses: dbelyaev/action-checkstyle@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          checkstyle_config: google_checks.xml <i class="conum" data-value="1"></i><b>(1)</b>
+          reporter: github-pr-review
+...</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Puedes usar configuraciones estándar como <code>google_checks.xml</code> o una propia.</td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-checkstyle-result.png" alt="github action checkstyle result">
+</div>
+<div class="title">Figure 2. Ejemplo de anotaciones de Checkstyle en una Pull Request</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_despliegue_en_la_vm"><a class="anchor" href="#_despliegue_en_la_vm"></a>Despliegue en la VM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para desplegar el archivo JAR de Spring Boot en la instancia de despliegue, utilizaremos SSH de forma similar al ejemplo de Node.js.</p>
+</div>
+<div class="sect2">
+<h3 id="_añadir_secretos"><a class="anchor" href="#_añadir_secretos"></a>Añadir secretos</h3>
+<div class="paragraph">
+<p>Configura los secretos <code>SSH_PRIVATE_KEY</code> y <code>SSH_HOST</code> en tu repositorio como se explicó en la sección de Node.js.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_flujo_de_trabajo_de_despliegue"><a class="anchor" href="#_flujo_de_trabajo_de_despliegue"></a>Flujo de trabajo de despliegue</h3>
+<div class="paragraph">
+<p>Creamos <code>.github/workflows/deploy.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: Deploy
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Build with Maven
+        run: ./mvnw clean package -DskipTests
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          known_hosts: 'placeholder'
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} &gt;&gt; ~/.ssh/known_hosts
+
+      - name: Deploy and Start Application
+        run: |
+          scp target/*.jar ubuntu@${{ secrets.SSH_HOST }}:~/app.jar
+          ssh ubuntu@${{ secrets.SSH_HOST }} "fuser -k 8080/tcp || true" <i class="conum" data-value="1"></i><b>(1)</b>
+          ssh ubuntu@${{ secrets.SSH_HOST }} "nohup java -jar ~/app.jar &gt; log.txt 2&gt;&amp;1 &amp;" <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Detiene cualquier proceso que esté escuchando en el puerto 8080.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Ejecuta la aplicación en segundo plano.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Por defecto, Spring Boot escucha en el puerto 8080. Asegúrate de que dicho puerto esté abierto en el cortafuegos de tu proveedor de nube.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>EJERCICIOS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Implementa el despliegue utilizando <strong>Docker</strong>. Publica la imagen en GitHub Packages, Docker Hub o Google Container Registry y despliégala en la VM.</p>
+</li>
+<li>
+<p><strong>Java y CORBA</strong>: Aunque CORBA es una tecnología antigua, todavía se utiliza en entornos industriales y heredados. Crea un pequeño ejemplo en Java que utilice IDL para definir una interfaz y automatiza la generación de <strong>stubs</strong> y <strong>skeletons</strong> en tu workflow de GitHub Actions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pista 1</strong>: Dado que CORBA fue eliminado en Java 11, tendrás que utilizar una librería externa como <a href="https://jacorb.org/">JacORB</a> o utilizar una imagen de Docker con un JDK antiguo (ej. Java 8) para compilar el archivo <code>.idl</code> con <code>idlj</code>.</p>
+</li>
+<li>
+<p><strong>Pista 2</strong>: Investiga cómo añadir el paso de generación de código antes del paso de compilación (<code>mvn compile</code>) en tu archivo <code>build.yml</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

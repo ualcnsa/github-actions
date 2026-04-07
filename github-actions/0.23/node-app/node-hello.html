@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hola mundo en NodeJS :: Despliegue continuo con GitHub Actions</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Despliegue continuo con GitHub Actions</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="github-actions" data-version="0.23">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Introducción</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../first-steps/index.html">Primeros pasos con GitHub Actions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/first-project.html">Comenzando con GitHub Actions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Aplicación en NodeJS</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="node-hello.html"><em>Hola mundo</em> en NodeJS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../spring-boot-app/index.html">Aplicación en Spring Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../spring-boot-app/spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../ionic-app/index.html">Aplicación Ionic (Angular)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ionic-app/ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Despliegue continuo con GitHub Actions</span>
+    <span class="version">0.23-beta.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">0.23-beta.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Despliegue continuo con GitHub Actions</a></li>
+    <li><a href="index.html">Aplicación en NodeJS</a></li>
+    <li><a href="node-hello.html"><em>Hola mundo</em> en NodeJS</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/master/docs/modules/node-app/pages/node-hello.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page"><em>Hola mundo</em> en NodeJS</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A continuación se muestra un ejemplo de <strong>integración y despliegue continuos en GitHub Actions de un proyecto NodeJS</strong>. Los pasos a realizar son similares a los ejemplos anterior con Jenkins pero adaptaremos las ordenes o comandos a la forma de trabajar de GitHub Actions.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>La implementación de la integración y despliegue continuo permitirá que, para cada pull request en el repositorio, GitHub Actions instale las dependencias y ejecute los tests. Si los tests pasan correctamente, GitHub Actions desplegará la aplicación en el servidor de despliegue. Y si fallan, se notificará al desarrollador.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_repositorio"><a class="anchor" href="#_creación_del_repositorio"></a>Creación del repositorio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para empezar a trabajar solo necesitas un repositorio alojado en GitHub de tipo <strong>público</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>En este repositorio subiremos el contenido de <a href="https://github.com/ualcnsa/nodeapp/archive/b96d862ac1b7e2c159c29c2a8552355b01f5cc17.zip">un proyecto HelloWorld en NodeJS</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Descomprimimos el archivo en un directorio</p>
+</li>
+<li>
+<p>Entramos al directorio y hacemos <code>git init</code></p>
+</li>
+<li>
+<p>Creamos la rama principal <code>git checkout -b main</code></p>
+</li>
+<li>
+<p>Hacemos commit de todos los archivos con <code>git add -A &amp;&amp; git commit</code></p>
+</li>
+<li>
+<p>Añadimos el remote de nuestro repositorio <code>git remote add origin &lt;dirección-repositorio&gt;</code></p>
+</li>
+<li>
+<p>Subimos la rama local <code>git push origin main`</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Nuestro repositorio tiene que tener la siguiente estructura:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comprueba que los archivos <code>main.js</code>, <code>app.js</code> y  <code>app.test.js</code>, así como la carpeta <code>services</code>, estén dentro de una carpeta <code>src</code>. Si no es así, crea la carpeta <code>src</code> y muevelos dentro.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/node-files-initial-point.png" alt="node files initial point">
+</div>
+<div class="title">Figure 1. Archivos y carpetas en el estado inicial</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_workflow_en_github_actions"><a class="anchor" href="#_creación_del_workflow_en_github_actions"></a>Creación del workflow en GitHub Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creamos un nuevo workflow <code>.github/workflows/build.yml</code></p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml"> name: CI
+
+ on:
+   push:
+     branches: [ main ] <i class="conum" data-value="1"></i><b>(1)</b>
+   pull_request:
+     branches: [ main ]
+   workflow_dispatch:
+
+ jobs:
+   build:
+     runs-on: ubuntu-latest
+     container: node:20-alpine
+
+     steps:
+       - uses: actions/checkout@v4
+
+       - name: Install dependencies
+         run: npm install
+
+       - name: Test
+         run: npm run test-jenkins <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>El nombre de la rama <code>main</code> o <code>master</code> depende de cual es la rama principal.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Ejecuta los tests de igual forma a como los definimos para Jenkins.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>El resultado sera:</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-nodejs-test.png" alt="github action nodejs test">
+</div>
+<div class="title">Figure 2. Nodeapp action</div>
+</div>
+<div class="paragraph">
+<p>Sin embargo nos interesaría verlo de una forma más visual e integrado en el entorno de GitHub utilizando el action <a href="https://github.com/dorny/test-reporter">Test Reporter</a>. Esta acción permite anotar las pull requests con un test en formato junit.</p>
+</div>
+<div class="paragraph">
+<p>Editamos <code>.github/workflows/build.yml</code> y añadimos la acción para subir un artefacto con los resultados de los tests.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - uses: actions/upload-artifact@v4
+         if: success() || failure() <i class="conum" data-value="1"></i><b>(1)</b>
+         with:
+           name: test-results <i class="conum" data-value="2"></i><b>(2)</b>
+           path: ./coverage/test.results.xml <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ejecutamos el paso independiente de los fallos.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Nombre del artefacto.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Ruta del resultado de los tests.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Además añadimos otro flujo que anote la pull request llamado <code>.github/workflows/tests.yml</code></p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/tests.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: 'Test Report'
+ on:
+   workflow_run:
+     workflows: ['CI'] <i class="conum" data-value="1"></i><b>(1)</b>
+     types:
+       - completed
+ jobs:
+   report:
+     runs-on: ubuntu-latest <i class="conum" data-value="2"></i><b>(2)</b>
+     permissions:
+       checks: write
+       pull-requests: write
+       contents: read
+     steps:
+     - uses: dorny/test-reporter@v1
+       with:
+         artifact: test-results              <i class="conum" data-value="3"></i><b>(3)</b>
+         name: JEST Tests                    <i class="conum" data-value="4"></i><b>(4)</b>
+         path: 'test.results.xml'            <i class="conum" data-value="5"></i><b>(5)</b>
+         reporter: jest-junit                <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Se ejecuta cuando se completa el flujo llamado <code>CI</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>No hace falta contenedor.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Nombre del artefacto con los tests.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Nombre del check.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Nombre de los resultados dentro del zip.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Formato de los resultados.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Subimos los cambios y podemos comprobar el resultado en los <code>Checks</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-check-jest.png" alt="github action check jest">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_informe_de_cobertura"><a class="anchor" href="#_informe_de_cobertura"></a>Informe de cobertura</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Como ya sabemos, la cobertura de código nos va a ofrecer un valor directamente relacionado con la calidad de los juegos de prueba. Para obtener la cobertura y publicarla en GitHub Actions, debemos hacer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utilizar un action que se encarge de la publicación de la cobertura como <a href="https://github.com/mattallty/jest-github-action">Jest Github Action</a>.</p>
+</li>
+<li>
+<p>Modificar el paso <em>Test</em> del flujo de GitHub Actions para que llame al script de cobertura y publique el informe de cobertura generado.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Modifica <code>.github/workflows/build.yml</code>, cambiando el paso <code>Test</code> por la ejecución del action.</p>
+</li>
+<li>
+<p>Además pública todos los tests como artifact.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">   ...
+      - name: Test
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          test-command: "npm run coverage-jenkins" <i class="conum" data-value="1"></i><b>(1)</b>
+   ...
+      - uses: actions/upload-artifact@v4
+        if: success() || failure()
+        with:
+          name: test-results
+          path: ./coverage/test.results.xml
+          path: |
+            ./coverage/ <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Genera los tests de cobertura.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Subimos la carpeta completa.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Podemos probar realizando un pull request de prueba.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-coberture.png" alt="github action coberture">
+</div>
+<div class="title">Figure 3. Ejecución de cobertura</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_análisis_estático_de_código"><a class="anchor" href="#_análisis_estático_de_código"></a>Análisis estático de código</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>El código JavaScript es dinámicamente tipado, por lo que en lugar de usar el compilador para realizar el análisis estático de código, como ocurre en lenguajes como Java, las formas más comunes de <a href="https://medium.com/codecademy-engineering/static-analysis-in-javascript-a-technical-introduction-859de5d444a6">análisis estático en JavaScript</a> son <em>formatters</em> y <em>linters</em>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Formatters</em> o formateadores, escanean y reformatean rápidamente los archivos de código. Uno de los más populares es <a href="https://prettier.io/">Prettier</a>, que como cualquier buen formateador, corregirá automaticamente las inconsistencias que encuentre.</p>
+</li>
+<li>
+<p><em>Linters</em> pueden trabajar en aspectos de formato pero también otros problemas más complejos. Se basan en una serie de reglas para escanear el código, o descripciones de comportamientos a vigilar, y muestran todas las violaciones que encuentran. El más popular para JavaScript es <a href="https://eslint.org/">ESLint</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vamos a probar <strong>ESLint con Prettier</strong> en GitHub Actions con la action <a href="https://github.com/ataylorme/eslint-annotate-action">ESLint Annotate from Report JSON</a>. Para utilizarla, vamos a añadir al <code>package.json</code> un script para <code>lint</code> en formato json</p>
+</div>
+<div class="listingblock">
+<div class="title">package.json: lint y dependencia a ESLint</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">   ...
+   "scripts": {
+      ...
+      "lint:json": "eslint src/**/*.js --format json -o coverage/eslint-result.json"
+   },
+   ...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En nuestro flujo <code>.github/workflows/build.yml</code>, añade dos nuevos pasos: uno en el que llames a <code>lint:json</code> y otro que ejecute la action para anotar el código.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Save Code Linting Report JSON
+         run: npm run lint:json
+         continue-on-error: true <i class="conum" data-value="1"></i><b>(1)</b>
+
+       - name: Annotate Code Linting Results
+         uses: ataylorme/eslint-annotate-action@v4
+         with:
+           github-token: "${{ secrets.GITHUB_TOKEN }}" <i class="conum" data-value="2"></i><b>(2)</b>
+           report-json: "./coverage/eslint-result.json" <i class="conum" data-value="3"></i><b>(3)</b>
+...</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Continua ejecutando el flujo aunque se produzca un error.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Esta action necesita un token para poder anotar el código. Esta disponible sin realizar más acciones.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Ruta del informe de ESLint.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Podemos probar realizando un pull request de prueba y viendo el resultado en la pestaña <code>Files Changed</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-eslint-result.png" alt="github action eslint result">
+</div>
+<div class="title">Figure 4. Ejecución de ESLint</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_despliegue_en_la_vm"><a class="anchor" href="#_despliegue_en_la_vm"></a>Despliegue en la VM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para desplegar la aplicación <em>hello world</em> en la instancia de despliegue vamos a clonar el repositorio y a continuación ejecutaremos en ella la orden de Node para ponerla en marcha.</p>
+</div>
+<div class="paragraph">
+<p>Recuerda que ya he hemos realizado una configuración previa sobre la instancia de despliegue, que constituyen los  <strong>prerrequisitos</strong> para esta sección:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Con anterioridad ya instalamos NodeJS en la instancia de despliegue.</p>
+</li>
+<li>
+<p>Tenemos creado un par de claves y hemos copiado la clave pública de despliegue al <code>authorized_keys</code> para que GitHub pueda ejecutar comandos sobre ella usando la clave privada.</p>
+</li>
+<li>
+<p>Como requisito adicional, para ayudarnos a lanzar <code>npm start</code> desde GitHub Actions, como un proceso demonio en background, usaremos <a href="https://www.npmjs.com/package/forever"><strong>forever</strong></a>. Debes instalar <code>forever</code> en la  instancia de despliegue:</p>
+<div class="literalblock">
+<div class="content">
+<pre>sudo npm install forever -g</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Una vez revisados los prerrequisitos, vamos a configurar nuestro repositorio de GitHub para que pueda realizar el despliegue.</p>
+</div>
+<div class="sect2">
+<h3 id="_añadir_la_clave_privada_a_los_secretos_del_repositorio"><a class="anchor" href="#_añadir_la_clave_privada_a_los_secretos_del_repositorio"></a>Añadir la clave privada a los secretos del repositorio.</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ve a tu repositorio en Github y entra en <code>Settings &gt; Secrets</code>.</p>
+</li>
+<li>
+<p>Crea un nuevo secreto con <code>New Repository Secret</code>. Este secreto contiene dos cosas: un nombre y el valor. El nombre se utiliza para obtener el valor más tarde en un flujo de trabajo de Github Actions.</p>
+</li>
+<li>
+<p>Introduce como nombre <code>SSH_PRIVATE_KEY</code>.</p>
+</li>
+<li>
+<p>Copia y pega el contenido de la clave privada como el valor.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-new-secret.png" alt="github action new secret">
+</div>
+<div class="title">Figure 5. Nuevo secreto</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_añadir_la_clave_privada_al_flujo_de_trabajo_de_github_actions"><a class="anchor" href="#_añadir_la_clave_privada_al_flujo_de_trabajo_de_github_actions"></a>Añadir la clave privada al flujo de trabajo de Github Actions</h3>
+<div class="paragraph">
+<p>Ahora tenemos que añadir la clave privada a la máquina o contenedor de nuestro flujo de trabajo. Para simplificar el proceso podemos usar una action como <a href="https://github.com/marketplace/actions/install-ssh-key">Install SSH Key</a>. Además, vamos a realizar el despliegue en un flujo nuevo <code>.github/workflows/deploy.yml</code> que solo se ejecute al hacer push sobre la rama principal.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: Deploy
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY }} <i class="conum" data-value="1"></i><b>(1)</b>
+          known_hosts: 'un-valor-para-que-no-de-error' <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del secreto con la clave privada.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Valor del known_hosts de la máquina a la que nos conectamos. Metemos un valor de ejemplo para calcularlo dinámicamente en pasos posteriores.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_añadir_un_valor_correcto_de_known_hosts"><a class="anchor" href="#_añadir_un_valor_correcto_de_known_hosts"></a>Añadir un valor correcto de known_hosts</h3>
+<div class="paragraph">
+<p>Vamos a guardar como secreto la IP o nombre de dominio de la máquina de despliegue con el nombre de <code>SSH_HOST</code>. Con este valor, vamos a añadir un paso que obtenga el <code>known_hosts</code> y lo escriba.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} &gt;&gt; ~/.ssh/known_hosts</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_añadir_el_código_de_despliegue"><a class="anchor" href="#_añadir_el_código_de_despliegue"></a>Añadir el código de despliegue</h3>
+<div class="paragraph">
+<p>De forma similar a como lo haciamos con Jenkins, vamos a añadir un último paso que realize el despliegue mediante ssh.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/deploy.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">      - name: Deploy
+         run: |
+           ssh ubuntu@${{ secrets.SSH_HOST }} "if [ ! -d 'nodeapp' ]; then \
+               git clone https://github.com/ualcnsa/nodeapp.git; \ <i class="conum" data-value="1"></i><b>(1)</b>
+             else \
+               cd nodeapp &amp;&amp; git stash &amp;&amp; git fetch --all &amp;&amp; git reset --hard origin/main &amp;&amp; git pull origin main; \
+             fi"
+           ssh ubuntu@${{ secrets.SSH_HOST }} "if pgrep node; then forever stopall; fi"
+           ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp &amp;&amp; npm install"
+           ssh ubuntu@${{ secrets.SSH_HOST }} "cd nodeapp &amp;&amp; forever start src/main.js"</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del repositorio a desplegar.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Podemos acceder a la aplicación mediante el puerto 3000. Si no se puede acceder, habrá que abrirlo en la consola de Google Cloud.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-deploy-result.png" alt="github action deploy result">
+</div>
+<div class="title">Figure 6. Resultado del despliegue</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>EJERCICIOS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crea un nuevo flujo de despliegue, similar al creado en Jenkins, que utilize Docker. Puedes hacerlo de forma manual (mediante script) o busca actions que te ayuden a publicarlo en el registro de Google Cloud.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Referencias</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://zellwk.com/blog/github-actions-deploy/">Deploying to a server via SSH and Rsync in a Github Action</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

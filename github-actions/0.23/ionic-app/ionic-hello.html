@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hola mundo en Ionic (Angular) :: Despliegue continuo con GitHub Actions</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Despliegue continuo con GitHub Actions</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="github-actions" data-version="0.23">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Introducción</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../first-steps/index.html">Primeros pasos con GitHub Actions</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/first-project.html">Comenzando con GitHub Actions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../first-steps/antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../node-app/index.html">Aplicación en NodeJS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../node-app/node-hello.html"><em>Hola mundo</em> en NodeJS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../spring-boot-app/index.html">Aplicación en Spring Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../spring-boot-app/spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Aplicación Ionic (Angular)</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Despliegue continuo con GitHub Actions</span>
+    <span class="version">0.23-beta.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">0.23-beta.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Despliegue continuo con GitHub Actions</a></li>
+    <li><a href="index.html">Aplicación Ionic (Angular)</a></li>
+    <li><a href="ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/master/docs/modules/ionic-app/pages/ionic-hello.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page"><em>Hola mundo</em> en Ionic (Angular)</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A continuación se muestra un ejemplo de <strong>integración y despliegue continuos en GitHub Actions de un proyecto Ionic con Angular</strong>. Al igual que con el proyecto NodeJS, automatizaremos las pruebas, el análisis estático y, adicionalmente, realizaremos el <strong>despliegue en GitHub Pages</strong>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>La implementación permitirá que, para cada cambio en el repositorio, GitHub Actions:
+1. Instale las dependencias.
+2. Ejecute los tests unitarios.
+3. Realice un análisis estático de código (<strong>linting</strong>).
+4. Obtenga un informe de cobertura.
+5. Construya la aplicación para producción.
+6. Despliegue la aplicación automáticamente en <strong>GitHub Pages</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_repositorio_y_proyecto_ionic"><a class="anchor" href="#_creación_del_repositorio_y_proyecto_ionic"></a>Creación del repositorio y proyecto Ionic</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para empezar, necesitamos un repositorio público en GitHub. En este caso, inicializaremos un proyecto de tipo <strong>starter</strong> utilizando la última versión de Ionic (Ionic 8).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crea un repositorio vacío en GitHub llamado <code>ionic-app</code>.</p>
+</li>
+<li>
+<p>Clona el repositorio y entra en él:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git clone &lt;url-del-repositorio&gt;
+cd ionic-app</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Inicializa el proyecto utilizando el CLI de Ionic (puedes usar <code>tabs</code>, <code>sidemenu</code> o <code>blank</code>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Instalamos el CLI de Ionic si no lo tenemos
+npm install -g @ionic/cli
+
+# Creamos un proyecto de tipo tabs con Angular
+ionic start . tabs --type=angular --capacitor --no-git</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Hacemos el commit inicial:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git add -A &amp;&amp; git commit -m "Initial Ionic 8 project"
+git push origin main</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comprueba que el archivo <code>ionic.config.json</code> esté en la raíz del repositorio y que el código fuente esté en <code>src/</code>.</p>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/ionic-files-initial-point.png" alt="ionic files initial point">
+</div>
+<div class="title">Figure 1. Archivos y carpetas en el estado inicial</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuración_de_pruebas_y_cobertura"><a class="anchor" href="#_configuración_de_pruebas_y_cobertura"></a>Configuración de Pruebas y Cobertura</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Karma está deprecado.</strong> Aunque sigue siendo el motor por defecto en muchos proyectos antiguos, el equipo de Angular e Ionic recomienda migrar a soluciones más modernas como <strong>Vitest</strong> o <strong>Web Test Runner</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A continuación, se presentan las dos alternativas principales para configurar tus pruebas unitarias.</p>
+</div>
+<div class="sect2">
+<h3 id="_opción_a_vitest_recomendado"><a class="anchor" href="#_opción_a_vitest_recomendado"></a>Opción A: Vitest (Recomendado)</h3>
+<div class="paragraph">
+<p><strong>Vitest</strong> es actualmente la opción preferida por su velocidad y compatibilidad nativa con TypeScript y ESM.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Instala las dependencias necesarias:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">npm install vitest @analogjs/vitest-angular jsdom --save-dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Crea el archivo de configuración <code>vitest.config.ts</code>:</p>
+<div class="listingblock">
+<div class="title">vitest.config.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { defineConfig } from 'vitest/config';
+import { AngularVitestPlugin } from '@analogjs/vitest-angular';
+
+export default defineConfig({
+  plugins: [AngularVitestPlugin()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['src/test-setup.ts'],
+    include: ['src/**/*.spec.ts'],
+    reporters: ['default', 'junit'],
+    outputFile: 'coverage/test.results.xml'
+  },
+});</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_opción_b_web_test_runner"><a class="anchor" href="#_opción_b_web_test_runner"></a>Opción B: Web Test Runner</h3>
+<div class="paragraph">
+<p><strong>Web Test Runner</strong> es la alternativa oficial si necesitas que tus pruebas se ejecuten obligatoriamente en un navegador real (Chrome/Firefox) en lugar de en un entorno simulado como jsdom.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configura Angular para usarlo:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ng add @angular-devkit/build-angular:web-test-runner</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Al ejecutar los tests, asegúrate de generar el reporte JUnit:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ng test --web-test-runner --reporters junit</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pruebas_de_extremo_a_extremo_e2e_con_cypress"><a class="anchor" href="#_pruebas_de_extremo_a_extremo_e2e_con_cypress"></a>Pruebas de Extremo a Extremo (E2E) con Cypress</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para complementar las pruebas unitarias, utilizaremos <strong>Cypress</strong>, que nos permite automatizar la interacción del usuario con la interfaz de la aplicación.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Instala Cypress como dependencia de desarrollo:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">npm install cypress --save-dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Crea una configuración básica <code>cypress.config.ts</code> (o <code>.js</code>) para definir dónde se encuentra la aplicación:</p>
+<div class="listingblock">
+<div class="title">cypress.config.ts</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-typescript hljs" data-lang="typescript">import { defineConfig } from 'cypress';
+
+export default defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:8100',
+    supportFile: false
+  },
+});</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_workflow_de_ci_integración_continua"><a class="anchor" href="#_creación_del_workflow_de_ci_integración_continua"></a>Creación del workflow de CI (Integración Continua)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creamos el archivo <code>.github/workflows/build.yml</code> para automatizar todo el proceso.</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: CI/CD Ionic
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write <i class="conum" data-value="1"></i><b>(1)</b>
+      checks: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Linting
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Test
+        run: npm run test:ci <i class="conum" data-value="2"></i><b>(2)</b>
+
+      - name: Build
+        run: npx ionic build --prod
+
+      - name: Upload Artifacts (Build)
+        uses: actions/upload-artifact@v4
+        with:
+          name: www
+          path: www/
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: coverage/test.results.xml
+
+.Resultado de la ejecución del workflow de Ionic
+image::github-action-ionic-test.png[role="thumb", align="center"]
+
+      - name: E2E Tests (Cypress) 🧪
+        uses: cypress-io/github-action@v6
+        with:
+          start: npx ionic serve
+          wait-on: 'http://localhost:8100'
+          browser: chrome
+
+      - name: Upload Cypress Screenshots/Videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-artifacts
+          path: |
+            cypress/screenshots
+            cypress/videos
+
+  reporting:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@v4
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          report-json: "coverage/eslint-result.json" <i class="conum" data-value="3"></i><b>(3)</b>
+
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: Karma Tests
+          path: 'test.results.xml'
+          reporter: java-junit</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>El nombre de la rama <code>main</code> o <code>master</code> depende de cuál es la rama principal.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Ejecuta los tests unitarios. Asegúrate de añadir el script <code>"test:ci": "vitest run"</code> en tu <code>package.json</code> si usas Vitest.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Asegúrate de configurar el script de lint para generar este archivo.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reporte_de_tests_y_cobertura"><a class="anchor" href="#_reporte_de_tests_y_cobertura"></a>Reporte de Tests y Cobertura</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Al igual que en el ejemplo de NodeJS, utilizaremos <code>test-reporter</code> para visualizar los resultados en GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Añade un nuevo workflow <code>.github/workflows/tests.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/tests.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: 'Test Report'
+on:
+  workflow_run:
+    workflows: ['CI/CD Ionic']
+    types: [completed]
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: dorny/test-reporter@v1
+        with:
+          artifact: test-results
+          name: Karma Tests
+          path: 'test.results.xml'
+          reporter: java-junit</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_despliegue_en_github_pages"><a class="anchor" href="#_despliegue_en_github_pages"></a>Despliegue en GitHub Pages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para el despliegue, utilizaremos la acción de James Ives. Es importante notar que si tu aplicación no se despliega en la raíz (ej. <code>usuario.github.io/app/</code>), debes ajustar el <code>base-href</code>.</p>
+</div>
+<div class="paragraph">
+<p>Modifica el paso de construcción y añade el despliegue en <code>.github/workflows/build.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">.github/workflows/build.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">...
+      - name: Build
+        run: npx ionic build --prod -- --base-href /${{ github.event.repository.name }}/ <i class="conum" data-value="1"></i><b>(1)</b>
+
+      - name: Deploy to GitHub Pages 🚀
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: www <i class="conum" data-value="2"></i><b>(2)</b>
+          branch: gh-pages
+...</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Ajustamos la URL base para que las rutas funcionen en GitHub Pages.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>La carpeta <code>www</code> es donde Ionic/Angular genera el build por defecto.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_activación_en_github"><a class="anchor" href="#_activación_en_github"></a>Activación en GitHub</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Una vez ejecutado el workflow por primera vez, verás una nueva rama llamada <code>gh-pages</code>.</p>
+</li>
+<li>
+<p>Ve a <code>Settings &gt; Pages</code>.</p>
+</li>
+<li>
+<p>En <code>Build and deployment</code>, selecciona <code>Deploy from a branch</code> y elige la rama <code>gh-pages</code>.</p>
+</li>
+<li>
+<p>¡Listo! Tu aplicación Ionic estará disponible en la URL indicada.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-pages-deployment.png" alt="github pages deployment">
+</div>
+<div class="title">Figure 2. Sitio desplegado en GitHub Pages</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Para que el despliegue funcione correctamente en una subruta (como GitHub Pages), asegúrate de que el comando de build incluya <code>--base-href /nombre-del-repo/</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>EJERCICIOS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>El problema del F5</strong>: Al desplegar una SPA (Single Page Application) en GitHub Pages, si el usuario refresca la página (F5) en una ruta distinta a la raíz (ej. <code>/tabs/tab1</code>), GitHub devuelve un error 404. Encuentra una solución para que las rutas funcionen correctamente tras un refresco.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pista 1</strong>: Investiga el uso de <code>HashLocationStrategy</code> en el enrutador de Angular (<code>useHash: true</code>).</p>
+</li>
+<li>
+<p><strong>Pista 2</strong>: Otra opción es utilizar un script en un archivo <code>404.html</code> personalizado que redirija a <code>index.html</code> preservando la ruta original.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>Referencias:
+* <a href="https://ionicframework.com/docs/angular/testing">Testing Ionic Angular Apps</a>
+* <a href="https://github.com/JamesIves/github-pages-deploy-action">GitHub Pages Deploy Action</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

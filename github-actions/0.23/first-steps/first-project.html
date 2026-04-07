@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comenzando con GitHub Actions :: Despliegue continuo con GitHub Actions</title>
+    <meta name="generator" content="Antora 3.1.14">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Despliegue continuo con GitHub Actions</a>
+      <button class="navbar-burger" aria-controls="topbar-nav" aria-expanded="false" aria-label="Toggle main menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="github-actions" data-version="0.23">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Introducción</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Primeros pasos con GitHub Actions</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="first-project.html">Comenzando con GitHub Actions</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="antora-doc.html">Primer ejemplo: Documentación en Antora</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../node-app/index.html">Aplicación en NodeJS</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../node-app/node-hello.html"><em>Hola mundo</em> en NodeJS</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../spring-boot-app/index.html">Aplicación en Spring Boot</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../spring-boot-app/spring-hello.html"><em>Hola mundo</em> en Spring Boot</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../ionic-app/index.html">Aplicación Ionic (Angular)</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../ionic-app/ionic-hello.html"><em>Hola mundo</em> en Ionic (Angular)</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Despliegue continuo con GitHub Actions</span>
+    <span class="version">0.23-beta.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <div class="title"><a href="../index.html">Despliegue continuo con GitHub Actions</a></div>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">0.23-beta.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Despliegue continuo con GitHub Actions</a></li>
+    <li><a href="index.html">Primeros pasos con GitHub Actions</a></li>
+    <li><a href="first-project.html">Comenzando con GitHub Actions</a></li>
+  </ul>
+</nav>
+<div class="edit-this-page"><a href="https://github.com/ualcnsa/github-actions/edit/master/docs/modules/first-steps/pages/first-project.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Comenzando con GitHub Actions</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">Example 1. Objetivos</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Comenzar a crear flujos de trabajo (workflows) de GitHub Actions.</p>
+</li>
+<li>
+<p>Probar un flujo de trabajo sencillo para familiarizarse con la plataforma.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introducción_a_github_actions"><a class="anchor" href="#_introducción_a_github_actions"></a>Introducción a GitHub Actions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>GitHub Actions</strong> es una <strong>plataforma</strong> de integración continua y despliegue continuo <strong>(CI/CD)</strong> que permite crear flujos de construcción, test y despliegue en GitHub. Estos flujos de trabajo permiten crear y probar cada solicitud de cambios en tu repositorio o desplegar solicitudes de cambios fusionadas a producción.</p>
+</div>
+<div class="paragraph">
+<p>Sus principales características son:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Permite <strong>automatizar los flujos de trabajo</strong> proporcionando capacidades de <strong>CI/CD</strong> a GitHub.</p>
+</li>
+<li>
+<p><strong>Construye, prueba y despliega</strong> tu código directamente desde GitHub.</p>
+</li>
+<li>
+<p>Permite <strong>integrar</strong> las <strong>revisiones de código</strong>, manejo de <strong>ramas</strong>, resolución de <strong>incidencias</strong> y creación de <strong>releases</strong>.</p>
+</li>
+<li>
+<p>Permite <strong>descubrir, crear y compartir <code>actions</code></strong> para ejecutar cualquier trabajo que quieras.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creación_del_repositorio"><a class="anchor" href="#_creación_del_repositorio"></a>Creación del repositorio</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Para empezar a trabajar con GitHub Actions solo necesitas un repositorio alojado en GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Para ello seguimos los siguientes pasos:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Al lado de nuestro avatar de usuario, pulsamos en <code>+ &gt; New Repository</code></p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-new-repository.png" alt="github new repository">
+</div>
+</div>
+</li>
+<li>
+<p>Creamos un repositorio llamado <code>hello-action</code> de tipo <strong>público</strong>.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-create-repository.png" alt="github create repository">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Las <strong>GitHub Actions</strong> funcionan tanto con repositorios <strong>públicos</strong> como <strong>privados</strong>. Sin embargo, otras funciones como las <strong>GitHub Pages</strong> solo funcionan con los repositorios <strong>públicos</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creando_tu_primer_workflow"><a class="anchor" href="#_creando_tu_primer_workflow"></a>Creando tu primer workflow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A continuación, vamos a añadir un workflow que muestra las características esenciales de GitHub Actions.</p>
+</div>
+<div class="paragraph">
+<p>Este ejemplo muestra como los trabajos de GitHub Actions pueden ser ejecutados automáticamente, donde corren y como interactuan con el código de tu repositorio.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clona en tu equipo el repositorio creado anteriormente.</p>
+</li>
+<li>
+<p>Crea un directorio <code>.github/workflows</code>.</p>
+</li>
+<li>
+<p>En este directorio, crea un fichero llamado <code>github-actions-demo.yml</code>.</p>
+</li>
+<li>
+<p>Copia el siguiente contenido YAML en el fichero anterior.</p>
+<div class="listingblock">
+<div class="title">github-actions-demo.yml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">name: GitHub Actions Demo <i class="conum" data-value="1"></i><b>(1)</b>
+on: [push] <i class="conum" data-value="2"></i><b>(2)</b>
+jobs:
+  Explore-GitHub-Actions: <i class="conum" data-value="3"></i><b>(3)</b>
+    runs-on: ubuntu-latest <i class="conum" data-value="4"></i><b>(4)</b>
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event." <i class="conum" data-value="5"></i><b>(5)</b>
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code <i class="conum" data-value="6"></i><b>(6)</b>
+        uses: actions/checkout@v4 <i class="conum" data-value="7"></i><b>(7)</b>
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Nombre del workflow.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Cuando se ejecuta el workflow. En este caso al hacer push en cualquier rama.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Nombre del trabajo.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Máquina donde se ejecuta el trabajo.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Comando de terminal bash.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Nombre del paso.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
+<td>Reutilización de un <code>action</code> creada por otro usuario. En este caso es la que se utiliza para obtener el código del repositorio.</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Hacemos <code>commit</code> de los cambios y hacemos <code>push</code> a la rama remota</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">git add -A &amp;&amp; git commit
+git push origin main</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_comprobando_el_resultado"><a class="anchor" href="#_comprobando_el_resultado"></a>Comprobando el resultado</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Es posible que la <strong>GitHub Actions</strong> no se ejecute instantaneamente y tarde un poco en aparecer. Los recursos son compartidos entre todos los usuarios de GitHub.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>En la página principal del repositorio, selecciona <code>Actions</code> en el menú principal</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-menu-actions.png" alt="github menu actions">
+</div>
+</div>
+</li>
+<li>
+<p>En esta página podemos ver tanto el listado de workflows que tenemos en nuestro repositorio, como las ejecuciones de cada uno. Además podemos ver si ha habido éxito en la ejecución del workflow.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-all-workflows.png" alt="github all workflows">
+</div>
+</div>
+</li>
+<li>
+<p>Pulsamos en el nombre del commit (<code>hello action</code> en la imagen anterior) y accederemos a un resumen de la ejecución. En esta suelen aparecer las estadísticas de tiempo, los artefactos asociados y cada uno de los trabajos o jobs de nuestro workflow.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-summary.png" alt="github action summary">
+</div>
+</div>
+</li>
+<li>
+<p>Pulsamos en el nombre del trabajo (<code>Explore-GitHub-Actions</code> en la imagen anterior) y vemos una descripción de cada una de los pasos o steps del trabajo.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-job-summary.png" alt="github action job summary">
+</div>
+</div>
+</li>
+<li>
+<p>Además podemos ver el log de ejecución de cada uno de los pasos.</p>
+<div class="imageblock text-center thumb">
+<div class="content">
+<img src="_images/github-action-job-step.png" alt="github action job step">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
