@@ -1,32 +1,31 @@
-name: Deploy docs
+name: Deploy Docs
 
 on:
   push:
     branches:
       - master
-  pull_request:
-  repository_dispatch:
-    types: [run_build]
 
 jobs:
-  deploy-docs:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    container: asciidoctor/docker-asciidoctor
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          apk update
-          apk add rsync 
-      - name: Build Docs
-        run: |
-          asciidoctor docs/index.adoc
-          find . -name .adoc -exec rm -rf '{}' \;
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
-        if: contains(github.ref,'refs/heads/master')
+      - name: Set up Node.js ⚙️
+        uses: actions/setup-node@v4
         with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Build Docs 🏗️
+        run: npx antora local-antora-playbook.yml
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/site
           branch: gh-pages
-          folder: docs
           clean: true
