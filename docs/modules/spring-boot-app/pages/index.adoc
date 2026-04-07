@@ -1,0 +1,15 @@
+= Aplicación en Spring Boot
+
+////
+COLOCA A CONTINUACION LOS OBJETIVOS
+////
+
+
+.Objetivos
+====
+Como construir y desplegar aplicaciones web Spring Boot con GitHub Actions.
+
+. Definir un flujo de trabajo para automatizar las etapas más habituales en CI/CD.
+. Desplegar la aplicación Spring Boot de forma nativa mediante archivos JAR.
+
+====

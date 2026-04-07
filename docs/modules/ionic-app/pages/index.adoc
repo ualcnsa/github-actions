@@ -1,0 +1,14 @@
+= Aplicación Ionic (Angular)
+
+En este módulo se describe cómo configurar la integración y el despliegue continuos para una aplicación móvil multiplataforma utilizando el framework Ionic con Angular.
+
+Se cubren los siguientes aspectos:
+
+*   Configuración del entorno y creación de un proyecto *starter*.
+*   Ejecución de pruebas unitarias y generación de informes.
+*   Análisis estático de código (*linting*).
+*   Generación de informes de cobertura.
+*   Construcción de la aplicación para producción.
+*   Despliegue automático en **GitHub Pages**.
+
+xref:ionic-hello.adoc[Comenzar con el ejemplo de Ionic]
